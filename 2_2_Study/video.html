@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>video</title>
+    </head>
+    <body>
+        
+        <video controls autoplay>
+            <source src="https://youtu.be/qT1qRTMnTjE" type="video/mp4">
+            <source src="https://youtu.be/qT1qRTMnTjE" type="video/ogg">
+                
+             <p> source는 비디오/영상 소스 지정 가능</p>
+             <p>브라우저는 인식된 첫번째 형식을 사용함</p>   
+        </video>
+
+        <video width="320" height="240" controls>
+                <source src="forrest_gump.mp4" type="video/mp4">
+                <source src="forrest_gump.ogg" type="video/ogg">
+                <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English" default>
+                <track src="subtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian">
+
+                <p>track태그는 자막!!!!파일</p>
+        </video>
+
+    </body>
+</html>

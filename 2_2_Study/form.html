@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>form</title>
+    </head>
+    <body>
+    
+        <form action="" method="post">
+            <!-- action: form data를 처리할 웹 대상 name: form 이름 -->
+            <input type="text" placeholder="사용을 입력받는 폼">
+            <input type="password"> 
+            <p>한 줄 text입력, 암호 한 줄 입력</p>
+            <input type="button" value="기본버튼">
+            <input type="submit" value="웹 서버로 전송버튼">
+            <input type="reset" value="입력 초기화 버튼">
+            <input width="20px" height="20px" type="image" src="./boyun.jpeg"> <!-- image 버튼 -->
+        </form>
+
+        <input type="radio">
+        <input type="radio" checked>
+        <p>radio button</p>
+        <input type="checkbox">
+        <p>checkbox</p>
+
+        <input type="month">
+        <input type="number">
+        <p>숫자 스핀 버튼</p>
+        
+        <form action="/action_page.php" method="get">
+            Points:
+            <input type="range" name="points" min="0" max="10">
+            <input type="submit">
+        </form>
+        
+        <input type="color">
+       
+        <form action="/action_page.php">
+            E-mail:
+            <input type="email" name="email">
+            <input type="submit">
+        </form>
+
+        <!-- 필드에 '@'가 없으면 '@'을 써야한다는 말풍선이 뜹니다.
+        '@'없이는 제출버튼을 눌러도 작동하지 않습니다.
+        [출처] [ HTML ] input 태그 - 속성 type 종류 [2]. color,date,datetime-local,email,month,number|작성자 Nerow -->
+
+
+        <form>
+                <input type="url">
+                <input type="submit" value="제출">
+               </form>
+               <!-- url 형식 맞춰서 작성하지 않으면 submit 작동하지 않음 -->
+
+        <form action="/action_page.php">
+            Search Google:
+            <input type="search" name="googlesearch">
+            <input type="submit">
+            <!-- 장점은 바로 전부 지우는 버튼이 있음 -->
+        </form>
+        
+        <select name="option">
+            <optgroup label="hometown">
+                <option value="Seoul">Seoul</option>
+                <option value="Jeju">Jeju</option>
+                <option value="Incheon">Incheon</option>
+            </optgroup>  
+            <optgroup label="grade">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </optgroup>
+            <!-- optgroup: select 태그 내의 option을 그룹화 -->
+        </select>
+        <!-- 드롭다운 리스트를 가진 콤보박스 -->
+
+        
+    </body>
+</html>
