@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>12171572_강보윤</title>
+        <style>
+            table {
+                border: 1px solid gray;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="https://www.w3schools.com/action_page.php" method="get">
+            <table>
+                <caption>회원가입</caption>
+                <tr>
+                    <td>ID&nbsp;</td>
+                    <td><input name="id" type="text" placehorder="id" required></td>
+                </tr>
+                <tr>
+                    <td>PW&nbsp;</td>
+                    <td><input name="pw" type="password" required></td>
+                </tr>
+                <tr>
+                    <td>성명&nbsp;</td>
+                    <td><input name="name" type="text" required></td>
+                </tr>
+                <tr>
+                    <td>성별&nbsp;</td>
+                    <td>여성:<input name="gener" type="radio" id="female">&nbsp;남성:<input name="gener" type="radio" id="male"></td>
+                </tr>
+                <tr>
+                    <td>생년월일&nbsp;</td>
+                    <td><input type="date" required></td>
+                </tr>
+                <tr>
+                    <td>Email&nbsp;</td>
+                    <td><input type="email" required></td>
+                </tr>
+                <tr>
+                    <td>휴대폰&nbsp;</td>
+                    <td><input type="tel" required></td>
+                </tr>
+                <tr>
+                        <td>전화&nbsp;</td>
+                        <td>
+                            <select name="tel" id="tel">
+                                <option value="02">02</option>
+                                <option value="032">032</option>
+                                <option value="031">031</option>
+                                <option value="063">063</option>
+                                <option value="064">064</option>
+                                <input type="text">
+                            </select>
+                        </td>
+                    </tr>
+                <tr>
+                    <td>거주지&nbsp;</td>  
+                    <td>
+                        <select name="live">
+                                <option value="seoul">서울특별시</option>
+                                <option value="incheon">인천광역시</option>
+                                <option value="busan">부산</option>
+                                <option value="jeonju">전주</option>
+                                <option value="jeju">제주</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SNS안내&nbsp;</td>
+                    <td>예:<input type="radio" name="answer" id="yes">아니오:<input type="radio" name="answer" id="no"></td>
+                </tr>
+            </table>
+
+            <input type="submit" value="submit">
+        </form>
+    </body>
+</html>
