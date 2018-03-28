@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>w04_01_01</title>
+        <style>
+            * {
+                border: 1px red solid;
+            }
+            a {
+                text-decoration: none;
+            }
+            body {
+                padding: 0px;
+                margin: 0px;
+            }
+            header {
+                background-color:lightcoral;
+                padding: 20px 0px;
+                margin: 0px;
+                text-align: center;
+                font-size: 60px;
+            }
+            header:hover {
+                background-color: black;
+            }
+            nav {
+                background-color: lightcyan;
+                padding: 20px 0px;
+                margin: 0px;
+            }
+            section {
+                background-color: lightgoldenrodyellow;
+                padding: 10px 0px;
+                margin: 0px;
+                width: 80%;
+                float: left; 
+                /* float 그 다음요소에도 영향을 줌 */
+            }
+            artice {
+                background-color: indigo;
+                padding: 5px 0px;
+                margin: 0px;
+            }
+            aside {
+                background-color: lightslategray;
+                padding: 10px 0px;
+                margin: 0px;
+                width: 20%;
+                float:right;
+            }
+            footer {
+                clear: both;
+                background-color: lightsalmon;
+                padding: 10px 0px;
+                margin: 0px;
+                text-align: center;
+                font-size: 150%;
+                font-family: "Times New Roman";
+            }
+            table {
+                border-collapse: collapse;
+            }
+            table,tr,td {
+                
+                background-color: hotpink;
+                border: 1px solid black;
+            }
+            td:hover {
+                /* td:hover */
+                background-color: black;
+            }
+            tr:nth-child(1) {
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <header>header</header>
+        <nav><a href="">links</a></nav>
+        <section>
+            section
+            <article>
+                article
+                <table>
+                    <tr><td>1</td><td>2</td><td>3</td></tr>
+                    <tr><td>4</td><td>5</td><td>6</td></tr>
+                    <tr><td>7</td><td>8</td><td>9</td></tr>
+                    <tr><td>10</td><td>11</td><td>12</td></tr>
+                    <tr><td>13</td><td>14</td><td>15</td></tr>
+                </table>
+            </article>
+        </section>
+        <aside>aside</aside>
+        <footer>copyright 2018</footer>
+    </body>
+</html>
