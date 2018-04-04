@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>12171572_강보윤</title>
+        <link rel="stylesheet" href="./join.css" type="text/css">
+    </head>
+    <body>
+        <form action="https://www.w3schools.com/action_page.php" method="post">
+            <div class="titleArea">
+                <h2>JOIN</h2>
+            </div>
+            <table>
+                <caption>회원기본정보</caption>
+                <tr>
+                    <td><p class="deco">ID&nbsp;<img src="./ico_required.gif" alt="ico_required.gif"></p></td>
+                    <td><div class="wrapper"><input name="id" type="text" placehorder="id" required><p class="text">&nbsp;&nbsp;(영문소문자/숫자, 4~16자)</p></div></td>
+                </tr>
+                <tr>
+                    <td><p class="deco">PW&nbsp;<img src="./ico_required.gif" alt="ico_required.gif"></p></td>
+                    <td><div class="wrapper"><input name="pw" type="password" required><p class="text">&nbsp;&nbsp;(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)</p></div></td>
+                </tr>
+                <tr>
+                    <td><p class="deco">성명&nbsp;<img src="./ico_required.gif" alt="ico_required.gif"></p></td>
+                    <td><div class="wrapper"><input name="name" type="text" required></div></td>
+                </tr>
+                <tr>
+                    <td><p class="deco">성별&nbsp;</p></td>
+                    <td><div class="wrapper">여성:<input name="gener" type="radio" id="female">&nbsp;남성:<input name="gener" type="radio" id="male"></div></td>
+                </tr>
+                <tr>
+                    <td><p class="deco">생년월일&nbsp;<img src="./ico_required.gif" alt="ico_required.gif"></p></td>
+                    <td><div class="wrapper"><input type="date" required></div></td>
+                </tr>
+                <tr>
+                    <td><p class="deco">Email&nbsp;<img src="./ico_required.gif" alt="ico_required.gif"></p></td>
+                    <td><div class="wrapper"><input type="email" required></div></td>
+                </tr>
+                <tr>
+                    <td><p class="deco">휴대폰&nbsp;<img src="./ico_required.gif" alt="ico_required.gif"></p></td>
+                    <td><div class="wrapper"><input type="tel" required></div></td>
+                </tr>
+                <tr>
+                    <td><p class="deco">전화&nbsp;</p></td>
+                    <td>
+                        <div class="wrapper">
+                            <select name="tel" id="tel">
+                                <option value="02">02</option>
+                                <option value="032">032</option>
+                                <option value="031">031</option>
+                                <option value="063">063</option>
+                                <option value="064">064</option>
+                            </select>
+                            <input type="text">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p class="deco">거주지&nbsp;</p></td>  
+                    <td>
+                        <div class="wrapper">
+                            <select name="live">
+                                    <option value="seoul">서울특별시</option>
+                                    <option value="incheon">인천광역시</option>
+                                    <option value="busan">부산</option>
+                                    <option value="jeonju">전주</option>
+                                    <option value="jeju">제주</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p class="deco">SNS안내&nbsp;</p></td>
+                    <td><div class="wrapper">예:<input type="radio" name="answer" id="yes">아니오:<input type="radio" name="answer" id="no"></div></td>
+                </tr>
+            </table>
+            <div class="temp"><input type="submit" value="JOIN" class="join"></div>
+        </form>
+    </body>
+</html>

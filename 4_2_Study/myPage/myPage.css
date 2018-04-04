@@ -42,6 +42,11 @@ nav ul li:hover {
     cursor: pointer;
 }
 
+nav ul li a:hover {
+    text-decoration: none;
+    color: pink;
+}
+
 nav ul li a {
     text-decoration: none;
     color: black;
@@ -100,4 +105,9 @@ aside ul {
     width: 300px;
     height: 300px;
     padding-right: 20px;
+}
+
+#copyright {
+    color: #888;
+    font-size: 12px;
 }
