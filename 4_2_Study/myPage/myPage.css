@@ -1,13 +1,18 @@
 body {
     height: 100%;
     width: 100%;
-
     text-align: center;
     background-color:#f7effc;
 }
 
+
 .logo {
     display: inline-block;
+}
+
+.title-bar {
+    display: inline-block;
+    margin-left: 40px;
 }
 
 .title {
@@ -17,13 +22,40 @@ body {
     text-shadow: 3px 3px white;
 }
 
-
-.menu {
+.search {
     display: inline-block;
+    position: fixed;
+    top: 30px;
+    right: 50px;
+}
+
+#keyword {
+    border: 2px solid black;
+    background-color: plum;
+}
+
+.menu-top {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-top ul {
+    border: 4px solid black;
+    background-color: #fabddc;
+    box-shadow: 3px 3px #fabddc;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+}
+
+.menu-bottom {
+    display: flex;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
-nav ul {
+.menu-bottom ul {
     border: 4px solid black;
     background-color: white;
     box-shadow: 3px 3px white;
@@ -42,7 +74,12 @@ nav ul li:hover {
     cursor: pointer;
 }
 
-nav ul li a:hover {
+.menu-top ul li a:hover {
+    text-decoration: none;
+    color: pink;
+}
+
+.menu-bottom ul li a:hover {
     text-decoration: none;
     color: pink;
 }
@@ -77,6 +114,13 @@ aside ul {
     font-size: 24px;
 }
 
+#icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 .images {
     margin-left: 100px;
     height: 100%;
@@ -100,6 +144,7 @@ aside ul {
     cursor: pointer;
     box-shadow: black 2px 2px 0px 0px;
 }
+
 
 .images li img {
     width: 300px;
