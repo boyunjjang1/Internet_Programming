@@ -27,11 +27,19 @@ body {
     position: fixed;
     top: 30px;
     right: 50px;
+    z-index: 99;
 }
 
 #keyword {
     border: 2px solid black;
     background-color: plum;
+}
+
+
+.black {
+    color:black;
+    font-weight: bold;
+    font-size: 13px;
 }
 
 .menu-top {
@@ -45,8 +53,30 @@ body {
     box-shadow: 3px 3px #fabddc;
     list-style: none;
     display: flex;
+    padding: 0;
     justify-content: center;
 
+}
+
+.menu-top ul li {
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 5px;
+}
+
+.menu-bottom ul li{
+
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 5px;
+}
+
+.menu-top ul li a:hover {
+    text-decoration: none;
+}
+
+.menu-bottom ul li a:hover {
+    text-decoration: none;
 }
 
 .menu-bottom {
@@ -68,18 +98,15 @@ body {
 nav ul li {
     flex-direction: column;
     margin-right: 10px;
+    margin-top: 10px;
+
 }
 
 nav ul li:hover {
-    cursor: pointer;
+   cursor: pointer;
 }
 
-.menu-top ul li a:hover {
-    text-decoration: none;
-    color: pink;
-}
-
-.menu-bottom ul li a:hover {
+.black:hover {
     text-decoration: none;
     color: pink;
 }
