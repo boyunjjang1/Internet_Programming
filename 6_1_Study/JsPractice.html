@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JsPractice</title>
+        <style>
+            input {
+                position: absolute;
+                width: 100px;
+                height: 50px;
+            }
+        </style>
+        <script>
+            function clickme(){
+                alert('성공하셨습니다.');
+            }
+            function changeLocation(){
+
+                var w = window.innerWidth
+                || document.documentElement.clientWidth
+                || document.body.clientWidth;
+
+                var h = window.innerHeight
+                || document.documentElement.clientHeight
+                || document.body.clientHeight;
+
+                meTop = parseInt(Math.random() * h);
+                meLeft = parseInt(Math.random() * w);
+
+                document.getElementById('cm').style.top = meTop + "px";
+                document.getElementById('cm').style.left = meLeft + "px";
+            }
+            function focusme(){
+                document.getElementById('cm').blur();
+            }        
+        </script>
+    </head>
+    <body>
+        <input id="cm" type="button" value="Click Me!!" onclick="clickme();" onmouseover="changeLocation();" onfocus="focusme();">
+    </body>
+</html>
