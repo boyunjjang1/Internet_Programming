@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>form</title>
+    <meta charset="utf-8">
+    <style>
+    
+    </style>
+    <script>
+        function validateForm(){
+            var fullname = document.getElementById("fullname").value;
+            var fullname2 = document.forms["myform"]["fullname"].value;
+            if(fullname == ""){
+                alert("값을 채워주세요.");
+                document.getElementById("fullname").focus();
+                return false; // 데이터를 안보내도록 하기위해 false로 설정
+            }
+
+            var pw = document.getElementById("pw").value;
+            if(pw.length < 6){
+                alert("비밀번호는 6글자 이상 입력해야 합니다.");
+                return false;
+            }
+
+            var pw2 = document.getElementById("pw2").value;
+            if(pw != pw2){
+                alert("비밀번호는 일치해야 합니다.");
+                return false;
+            }
+
+            var age = document.getElementById("age").value;
+            if(isNaN(age)){ // 숫자가 아니면 true를 내뱉음
+                alert("숫자가 아닙니다.");
+                return false;
+            }
+            if(age < 1 || age > 100){
+                alert("값의 범위가 틀립니다.");
+                return false;
+            }
+
+            var gender = document.forms["myForm"]["gender"].value;
+            if(gender == ""){
+                alert("성별을 선택해야 합니다.");
+                return false;
+            }
+
+            var student = document.forms["myForm"]["student"].checked; // checkbox에 한해서 checked라는 속성ㅇ로 갖고온다.
+            if(student != true){
+                alert("학생만 가입 가능합니다.");
+                return false;
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <form id="myform" name="myForm" 
+        action="https://www.w3schools.com/action_page.php" 
+        onsubmit="return validateForm();"
+        method="post">
+        Name: <input type="text" id="fullname" name="fullname"><br/>
+        Password: <input type="password" id="pw" name="pw"><br/>
+        Password_Re: <input type="password" id="pw2" name="pw2"><br/>
+        Age: <input type="text" id="age" name="age"><br/>
+        Class: <input type="number" id="classnum" name="classnum" min="1" max="4"><br/>
+        gender: <input type="radio" id="gender" name="gender" value="male">male 
+    	<input type="radio" id="gender" name="gender" value="female">female<br/>
+	    student?: <input type="checkbox" id="student" name="student"><br/>
+        <input type="submit" value="Submit">        
+    </form>
+    <!--  onsubmit ==> 서버로 보내기전에 작동시켜주는 이벤트 -->
+    <button onclick="validateForm();">Validation</button>
+</body>
+</html>
