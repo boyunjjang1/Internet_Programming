@@ -11,29 +11,63 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="./join.css" type="text/css">
+        <style>
+            label {
+                color: gray;
+            }
+        </style>
         <script>
             function validateForm(){
 
                 var id = document.getElementById("id").value;
                 if(id == ""){
                     alert("아이디를 입력해주세요.");
+                    document.getElementById("id").focus();
                     return false;
                 }
                 
                 var pw = document.getElementById("pw").value;
                 if(pw.length < 8){
                     alert("패스워드를 8글자 이상 입력해주세요.");
+                    document.getElementById("pw").focus();
+                    return false;
+                }
+                var pw2 = document.getElementById("pw2").value;
+                if(pw != pw2){
+                    alert("패스워드가 일치하지 않습니다.");
+                    document.getElementById("pw2").focus();
                     return false;
                 }
 
+                var name = document.getElementById("name").value;
+                if(name == ""){
+                    alert("이름을 입력해주세요.");
+                    document.getElementById("name").focus();
+                    return false;
+                }
+                
+                var gender = document.getElementsByClassName("gender");
+                var female = gender[0].checked;
+                var male = gender[1].checked;
+
+                if(female == false && male == false){
+                    alert("성별을 선택해주세요.");
+                    return false;
+                }
+
+                var tel = document.getElementById("tel").value;
+                if(tel == ""){
+                    alert("전화번호를 입력해주세요.");
+                    document.getElementById("tel").focus();
+                    return false;
+                }
             }
         </script>
     </head>
     <body>
         <div class="container">
-                <h2 class="titleArea">JOIN</h2>
-            <form onsubmit="return validateForm()" class="form-horizontal" action="https://www.w3schools.com/action_page.php" method="post">
+                <h2 class="titleArea" style="color:pink;">JOIN</h2>
+            <form onsubmit="return validateForm()" class="form-horizontal myform" action="https://www.w3schools.com/action_page.php" method="post">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="id">ID</label>
                     <div class="col-sm-10">
@@ -47,7 +81,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="pw">PW Confirm</label>
+                    <label class="control-label col-sm-2" for="pw2">PW Confirm</label>
                     <div class="col-sm-10">
                         <input class="form-control" type="password" id="pw2" name="pw2">
                     </div>
@@ -60,10 +94,10 @@
                 </div>
                 <div class="form-group">
                     <label class="radio-inline col-sm-offset-2">
-                        <input type="radio" name="female">Female
+                        <input type="radio" class="gender" name="gender">Female
                         </label>
                         <label class="radio-inline">
-                        <input type="radio" name="male">Male
+                        <input type="radio" class="gender" name="gender">Male
                         </label>
                     </label>
                 </div>

@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>webPage</title>
+  <title>Boyomi's Closet</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./webPage.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-  </style>
+  <link rel="stylesheet" href="./webPage.css" type="text/css">
 </head>
 <body>
-<div class="jumbotron">
-  <div class="container text-center">
-    <h1>BOYOMI'S CLOSET<img src="./icon.png" id="icon" alt="icon.png"></h1>      
-    <p>Mission, Vission & Values</p>
-  </div>
+<div class="container text-center">
+  <h1 style="letter-spacing: 2px; color: gray;">BOYOMI'S CLOSET<img src="./icon.png" id="icon" alt="icon.png"></h1>      
+  <p>Closet Shop && DailyLook</p>
 </div>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -26,117 +23,92 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Deals</a></li>
-        <li><a href="#">Stores</a></li>
-        <li><a href="#">Contact</a></li>
+        <li class="active home"><a href="#">HOME</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">DailyLook</a></li>
+        <li><a href="#">Top</a></li>
+        <li><a href="#">Skirt</a></li>
+        <li><a href="#">Bag</a></li>
+        <li><a href="#">Acc</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+          <li><a href="#">JOIN</a></li>
+          <li><a href="#">BOARD WRITE</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<section class="slide">
-    <h2>Carousel Example</h2>  
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-    
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-        <div class="item active">
-            <img src="by1.png" alt="by1.png" style="width: 700px; height: 400px;">
-        </div>
-        <div class="item">
-            <img src="by2.png" alt="by2.png" style="width: 700px; height: 400px;">
-        </div>
-        
-        <div class="item">
-            <img src="by3.jpeg" alt="by3.jpeg" style="width: 700px; height: 400px;">
-        </div>
-        </div>
-    
-        <!-- Left and right controls -->
-        <a class="left carousel-control arrow" href="#myCarousel" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control arrow" href="#myCarousel" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-        </a>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner boyun" role="listbox">
+      <div class="item active">
+        <img src="./0.png" alt="by1.png">    
+      </div>
+      <div class="item">
+        <img src="./1.png" alt="by2.png">     
+      </div>
+      <div class="item">
+        <img src="./2.png" alt="by3.jpeg">  
+      </div>
     </div>
-</section>
-<div class="container">    
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+  
+<div class="container text-center">    
+  <h3 style="color: gray;">Boyun's dailylook</h3><br>
   <div class="row">
     <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
+      <img src="./by1.png" class="img-responsive" style="width:100%" alt="Image">
+      <p>첫 바지 입은 날!</p>
     </div>
     <div class="col-sm-4"> 
-      <div class="panel panel-danger">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
+      <img src="./by2.png" class="img-responsive" style="width:100%" alt="Image">
+      <p>보라한테 보라색 옷 받았다@!</p>    
     </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-success">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
+    <div class="col-sm-4">
+      <img src="./by3.jpeg" class="img-responsive" style="width:100%" alt="Image">
+      <p>제주도 여행룩..</p>
     </div>
+    <div class="col-sm-4">
+        <img src="./by3.jpeg" class="img-responsive" style="width:100%" alt="Image">
+        <p>제주도 여행룩..</p>
+    </div>
+    <div class="col-sm-4">
+        <img src="./by3.jpeg" class="img-responsive" style="width:100%" alt="Image">
+        <p>제주도 여행룩..</p>
+    </div>
+    <div class="col-sm-4">
+        <img src="./by3.jpeg" class="img-responsive" style="width:100%" alt="Image">
+        <p>제주도 여행룩..</p>
+    </div>
+  </div>
   </div>
 </div><br>
 
-<div class="container">    
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>
-  </div>
-</div><br><br>
-
 <footer class="container-fluid text-center">
-  <p>Online Store Copyright</p>  
-  <form class="form-inline">Get deals:
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Sign Up</button>
-  </form>
+  <p id="copyright">copyright 2018 design by boyun
+    <a href="mailto:boyunqueen@gmail.com" subject="보윤님께">관리자에게 Email</a>
+  </p>
 </footer>
-
 </body>
 </html>

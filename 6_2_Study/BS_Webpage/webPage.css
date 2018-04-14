@@ -1,33 +1,48 @@
 body {
-    background-color: #f7effc;
+ 
 }
 
 #icon {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
-/* Remove the navbar's default rounded borders and increase the bottom margin */ 
+.boyun {
+  height: 400px;
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */ 
 .navbar {
-    margin-bottom: 50px;
-    border-radius: 0;
-    background-color: white;
-    border: 3px solid black;
-  }
-  
-  /* Remove the jumbotron's default bottom margin */ 
-   .jumbotron {
-    margin-bottom: 0;
-    background-color: #f7effc;
-  }
+  margin-bottom: 0;
+  border-radius: 0;
+  border: 3px solid black;
+  background-color: white;
+}
 
+.navbar-inverse .navbar-nav>li>a:hover {
+  color: pink;
+}
 
-  .arrow {
-    background-image : linear-gradient(to right,rgba(0,0,0,.0000) 0,rgba(0,0,0,.0) 100%)
-  }
- 
-  /* Add a gray background color and some padding to the footer */
-  footer {
-    background-color: #f2f2f2;
-    padding: 25px;
-  }
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+  background-color: white;
+  color: pink;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+  background-color: #f2f2f2;
+  padding: 25px;
+}
+
+.carousel-inner img {
+  width: 100%; /* Set width to 100% */
+  margin: auto;
+  min-height:200px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media (max-width: 600px) {
+.carousel-caption {
+  display: none; 
+}
+}
