@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RSP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        img { width: 100px; height: 80px;}
+        .t { font-size: 15px;}
+        .win { color: blue;}
+        .loser { color: red;}
+        
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 페이지가 처음 열렸을 때 실행하는 함수 
+            console.log("ready()호출");
+            $("#u1").click(function(){uClick(0);});
+            $("#u2").click(function(){uClick(1);});
+            $("#u3").click(function(){uClick(2);});
+        })
+
+        function uClick(u){
+            // 사용자가 가위, 바위, 보 이미지를 선택했을 때
+            // 1. 컴퓨터의 선택지 생성(0~2 random())
+            
+            var c = Math.floor((Math.random() * 3)); // 0~2
+
+            console.log("컴퓨터선택",u, "컴퓨터", c);
+
+            switch(u){
+                case 0: 
+                    $("#u1").fadeTo(500, 1); // 1이 가장선명 opacity
+                    // animate를 넣어서 원하는 css 값을 넣어서 크기 줄였다 늘였다 가능
+                    $("#u2").fadeTo(500, 0.3);
+                    $("#u3").fadeTo(500, 0.3);
+
+                    break;
+
+                case 1:
+
+                    $("#u1").fadeTo(500, 0.3); // 1이 가장선명 opacity
+                    $("#u2").fadeTo(500, 1);
+                    $("#u3").fadeTo(500, 0.3);
+
+                    break;
+
+                case 2:
+
+                    $("#u1").fadeTo(500, 0.3); // 1이 가장선명 opacity
+                    $("#u2").fadeTo(500, 0.3);
+                    $("#u3").fadeTo(500, 1);
+
+                    break;
+            }
+            
+            switch(c){
+                case 0: 
+                    $("#c1").fadeTo(500, 1); // 1이 가장선명 opacity
+                    $("#c2").fadeTo(500, 0.3);
+                    $("#c3").fadeTo(500, 0.3);
+
+                    break;
+
+                case 1:
+
+                    $("#c1").fadeTo(500, 0.3); // 1이 가장선명 opacity
+                    $("#c2").fadeTo(500, 1);
+                    $("#c3").fadeTo(500, 0.3);
+
+                    break;
+
+                case 2:
+
+                    $("#c1").fadeTo(500, 0.3); // 1이 가장선명 opacity
+                    $("#c2").fadeTo(500, 0.3);
+                    $("#c3").fadeTo(500, 1);
+
+                    break;
+            }
+
+            // 3. 승패판정 c(0-2) - u(0-2)
+            
+            if(u == c){
+                // 비김
+
+                console.log("비김");
+                var result =  $("<span></span><br>").text("비김"); // p 태그로 문장 하나를 만들어 준 것임
+                result.addClass("t");
+                $("#result").prepend(result);
+            }
+
+            else if((u == 0 && c == 2) || (u == 1 && c == 0) || (u == 3 && c == 1)){
+                console.log("사용자 승");
+                var result =  $("<span></span><br>").text("사용자 승"); // p 태그로 문장 하나를 만들어 준 것임
+                result.addClass("t");
+                result.addClass("win");
+                $("#result").prepend(result);
+            }
+
+
+            else {
+                // 사용자 패
+
+                console.log("사용자 패");
+                var result =  $("<span></span><br>").text("사용자 패"); // p 태그로 문장 하나를 만들어 준 것임
+                result.addClass("t");
+                result.addClass("loser");
+                // $("#result").html(result);
+                $("#result").prepend(result);
+
+            }
+            
+            // 4. 새 게임
+            
+        }
+    </script>
+</head>
+<body>
+    <h1>가위바위보 게임</h1>
+    <h2>컴퓨터 선택</h2>
+    <img id="c1" src="./가위.png" alt="가위.png">
+    <img id="c2" src="./바위.png" alt="바위.png">
+    <img id="c3" src="./보.png" alt="보.png">
+    <h2>사용자 선택</h2>
+    <img id="u1" src="./가위.png" alt="가위.png">
+    <img id="u2" src="./바위.png" alt="바위.png">
+    <img id="u3" src="./보.png" alt="보.png">
+    <div id="result"></div>
+</body>
+</html>

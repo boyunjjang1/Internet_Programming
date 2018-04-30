@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lotto</title>
+        <script>
+            function fLotto(){
+                lotto = new Array(); // var lotto 로 만들면 지역변수로 선언이 돼서 밖에서 접근 할 수 없다
+                //lotto = [];
+                var overlap;
+                
+                do{
+
+                overlap = false;
+
+                var i;
+                for(i =0;i <6;i++){
+                    lotto[i] = Math.floor((Math.random() * 45) + 1); // 1 ~ 45
+                }
+                
+                console.log(lotto);
+                lotto.sort(function(a, b){return b-a;});
+                console.log(lotto);
+
+                for(i = 0; i < 5; i++){
+                    if(lotto[i] == lotto[i+1]){
+                        console.log("충돌!");
+                        overlap = true;
+                        lotto = [];
+                        break;
+                    }
+                }
+                
+
+                // lotto[lotto.length] 
+                // lotto.push(Math.floor(Math.random() * 45) + 1);
+                
+                if(overlap == false){
+                    var j;
+                    for(j=0;j < 5; j++){
+                        document.getElementById("result").innerHTML += "<img src='./ball_" + lotto[j]+ ".png'>";
+                    }
+
+                    document.getElementById("result").innerHTML += "<br/>";
+                }
+
+                // innerHTML tag로 인식
+                // document.getElementById("result").innerText = "</br>"
+                // innerText 단순 text로 인식
+                
+                } while(overlap);
+                
+
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="fLotto();">로또번호 생성</button>
+        <div id="result">
+            
+        </div>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JsPractice</title>
+        <style>
+            input {
+                position: absolute;
+                width: 100px;
+                height: 50px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+
+                $('#cm').click(clickme); // 방법 1, 함수를 호출하기, 함수코드만 넣어줘어야 하기때문에 괄호 ㄴㄴ
+                // $('#cm').click(clickme()); << clickme 두번 실행
+                $('#cm').click(function(){ // 방법 2, 익명함수를 만들어서 직접 코드를 넣기
+                    alert('성공하셨습니다.');
+                });
+                $('#cm').mouseover(changeLocation);
+                $('#cm').focus(focusme);
+
+                changeLocation();
+
+            });
+
+            // onclick="clickme();" 
+            // onmouseover="changeLocation();"
+            // onfocus="focusme();
+
+            function clickme(){
+                alert('성공하셨습니다.');
+            }
+            function changeLocation(){
+
+                var w = window.innerWidth
+                || document.documentElement.clientWidth
+                || document.body.clientWidth;
+
+                var h = window.innerHeight
+                || document.documentElement.clientHeight
+                || document.body.clientHeight;
+
+                meTop = parseInt(Math.random() * (h-50));
+                meLeft = parseInt(Math.random() * (w-100)); // 넘치지가 않아서 scroll이 생기지 않는다
+
+                // document.getElementById('cm').style.top = meTop + "px";
+                // document.getElementById('cm').style.left = meLeft + "px";
+
+                // $('#cm').css("top", metop + "px");
+                // $('#cm').css("left", meLeft + "px");
+
+                $('#cm').animate({
+                    "top" : meTop + "px",
+                    "left" : meLeft + "px"
+                },1000); // 1초동안 애니메이션이작동됨
+            }
+
+            function focusme(){
+                document.getElementById('cm').blur();
+            }        
+        </script>
+    </head>
+    <body>
+        <input id="cm" type="button" value="Click Me!!">
+    </body>
+</html>
