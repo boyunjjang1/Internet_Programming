@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webpage_template</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <style>
+        * { box-sizing: border-box; }
+        .redbox {border-color: red; color: red;}
+    </style>
+    <script>
+        $(document).ready(function() {
+            // initialize
+            $("#regForm").submit(function(){
+                // submit 버튼이눌렸을 때
+                if( $("#username").val().trim().length < 6){
+                    // trim == 공백을 제거해줌
+                    // alert("이름을 6자 이상 입력해야 합니다.");
+                    $("#modal-body").html("이름을 6자 이상 입력해야 합니다.");
+                    $("#myModal").modal();
+                    $("#username").addClass("redbox");
+                    return false;
+                } else {
+                    $("#username").removeClass("redbox");
+                }
+
+                if( $("#pwd").val().trim().length < 6){
+                    // alert("비밀번호를 6자 이상 입력해야 합니다.");
+                    $("#modal-body").html("비밀번호를 6자 이상 입력해야 합니다.");
+                    $("#myModal").modal();
+                    $("#pwd").addClass("redbox");
+                    return false;
+                } else {
+                    $("#pwd").removeClass("redbox");
+                }
+
+                if( $("#pwd").val().trim() != $("#pwd2").val().trim()){
+                    // alert("비밀번호가 일치하지 않습니다.");
+                    $("#modal-body").html("비밀번호가 일치하지 않습니다.");
+                    $("#myModal").modal();
+                    $("#pwd2").addClass("redbox");
+                    return false;
+                } else {
+                    $("#pwd2").removeClass("redbox");
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>회원가입</h2>
+                <form action="http://www.w3schools.com/action_page.php" id="regForm">
+                    <label for="email">eMail:</label>
+                    <input type="email" class="form-control" id="email"
+                        placeholder="Enter eMail" name="email">
+
+                    <label for="username">userName:</label>
+                    <input type="text" class="form-control" id="username"
+                        placeholder="Enter username" name="username">
+                    
+                    <label for="pwd">password:</label>
+                    <input type="password" class="form-control" id="pwd"
+                        placeholder="Enter password" name="pwd">
+
+                    <label for="pwd2">Re-password:</label>
+                    <input type="password" class="form-control" id="pwd2"
+                        placeholder="Enter password" name="pwd2">
+                    
+                    <button type="submit" class="btn btn-primary my-3">회원등록</button>
+                    
+                    <!-- The Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                    
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                            <h4 class="modal-title">회원가입</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                    
+                            <!-- Modal body -->
+                            <div class="modal-body" id="modal-body">
+                            Modal body..
+                            </div>
+                    
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                    
+                        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

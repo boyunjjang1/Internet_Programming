@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webpage_template</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <style>
+        * { box-sizing: border-box; }
+    </style>
+    <script>
+        $(document).ready(function() {
+            // initialize
+           
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form action="http://www.w3schools.com/action_page.php">
+            <div class="row my-3">
+                <div class="col-2">
+                    <label for="b_title">제목</label>
+                </div>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="b_title" name="b_title">
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-2">
+                    <label for="b_content">내용</label>
+                </div>
+                <div class="col-10">
+                    <textarea class="form-control" name="b_content" id="b_content" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-2 text-right">
+                    <label for="b_author">글쓴이</label>
+                </div>
+                <div class="col-4">
+                    <input class="form-control" type="text" id="b_author" name="b_author">
+                </div>
+                <div class="col-2 text-right">
+                    <label for="b_password">비밀번호</label>
+                </div>
+                <div class="col-4">
+                    <input class="form-control" type="password" id="b_password" name="password">
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary">글 등록</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
