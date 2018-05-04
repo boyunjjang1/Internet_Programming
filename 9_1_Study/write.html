@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Webpage_template</title>
+    <title>12171572_강보윤</title>
     <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,17 +16,64 @@
 
     <style>
         * { box-sizing: border-box; }
+        .redbox {border-color: red; color: red;}
     </style>
     <script>
         $(document).ready(function() {
             // initialize
+            
+            $("#writeForm").submit(function(){
+                
+                if($("#b_title").val().trim().length < 1){
+                    $("#modal-body").html("제목을 1글자 이상 입력해야 합니다."); // modal-body의 값을 넣어줌
+                    $("#myModal").modal(); // modal 불러옴
+                    $("#b_title").addClass("redbox");
+                    return false;
+                    } else {
+                        $("#b_title").removeClass("redbox");
+                    }
+                
+                if($("#b_content").val().trim().length < 1){
+                    $("#modal-body").html("내용을 1글자 이상 입력해야 합니다.");
+                    $("#myModal").modal();
+                    $("#b_content").addClass("redbox");
+                    return false;
+                } else {
+                    $("#b_content").removeClass("redbox");
+                }
+
+                if($("#b_author").val().trim().length < 1){
+                    $("#modal-body").html("이름을 입력해주세요.");
+                    $("#myModal").modal();
+                    $("#b_author").addClass("redbox");
+                    return false;
+                } else {
+                    $("#b_author").removeClass("redbox");
+                }
+
+                if($("#b_password").val().trim().length < 6){
+                    $("#modal-body").html("비밀번호를 6글자 이상 입력해야 합니다.");
+                    $("#myModal").modal();
+                    $("#b_password").addClass("redbox");
+                    return false;
+                } else {
+                    $("#b_password").removeClass("redbox");
+                }
+                
+                
+
+
+            })
+            
+            
+            
            
         });
     </script>
 </head>
 <body>
     <div class="container">
-        <form action="http://www.w3schools.com/action_page.php">
+        <form action="http://www.w3schools.com/action_page.php" id="writeForm">
             <div class="row my-3">
                 <div class="col-2">
                     <label for="b_title">제목</label>
@@ -54,7 +101,15 @@
                     <label for="b_password">비밀번호</label>
                 </div>
                 <div class="col-4">
-                    <input class="form-control" type="password" id="b_password" name="password">
+                    <input class="form-control" type="password" id="b_password" name="b_password">
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-2">
+                    <label for="email">eMail</label>
+                </div>
+                <div class="col-10">
+                    <input type="email" class="form-control" name="email" id="email" cols="30" rows="10">
                 </div>
             </div>
             <div class="row my-3">
@@ -62,6 +117,30 @@
                     <button type="submit" class="btn btn-primary">글 등록</button>
                 </div>
             </div>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                    
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">회원가입</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                    
+                            <!-- Modal body -->
+                            <div class="modal-body" id="modal-body">
+                                Modal body..
+                            </div>
+                    
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                    
+                        </div>
+                        </div>
+                    </div>
         </form>
     </div>
     
