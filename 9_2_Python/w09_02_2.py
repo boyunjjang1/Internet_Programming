@@ -1,16 +1,29 @@
 import random
 
-lottoList = [[0] * 5 for x in range(6)]
+lottoList = []
+
+while(True):
+    lottos = []
+    for i in range(0,6):
+        lottos.append(random.randrange(1,46))
+    
+
+    lottos.sort()
+    lottoList.append(lottos)
+
+    for j in range(0,5):
+        if(lottos[j] == lottos[j+1]):
+            lottoList.pop()
+            break
+
+
+    if(len(lottoList) == 5):
+        break
 
 
 
-for i in range(0,6,1):
-    for j in range(0,5,1):
-        lotto = random.randrange(1,46)
-        lottoList[i][j] = lotto
 
-
-for i in range(0,6,1):
-    for j in range(0,5,1):
-        print(lottoList[i][j],end=" ")
-    print("\n")
+for i in lottoList:
+    for j in i:
+        print(j,end=" ")
+    print()
