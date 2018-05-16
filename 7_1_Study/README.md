@@ -113,6 +113,70 @@ var x = 100 / "Apple"; // NaN
 typeof NaN; // Number , 즉 NaN의 type은 number 이다.
 ```
 
+3. 숫자 문자열 전환
+```
+var x = 123;
+x.toString(); // "123"
+var x2 = 0XFF; // 255
+```
+```
+var myNumber = 128;
+myNumber.toString(16);
+myNumber.toString(8);
+myNumber.toString(2);
+```
+4.
+```
+var x = 9.656;
+x.toExponential(2); // 9.66e + 0
+x.toExponential(4); // 9.6560e + 0
+```
+```
+var x = 9.656;
+x.toPrecision(); // 9.656
+x.toPrecision(2); // 9.7
+x.toPrecision(4); // 9.656
+x.toPrecision(6); // 9.65600
+```
+
+## Array
+1.
+```
+var fruits = ["Banana","Orange","Apple","Mango"];
+fruits.toString(); // Banana,Orange,Apple,Mango
+fruits.join("*"); // Banana*Orange*Apple*Mango
+fruits.pop(); // 후입선출, "Mango" => ["Banana","Orange","Apple"]
+x = fruits.push("Kiwi"); // ["Banana","Orange","Apple","Kiwi"], x = 4; x에는 총 개수가 들어감
+fruits.shift(); // 선입선출, "Banana" => ["Orange","Apple","Kiwi"]
+x = fruits.unshit("Lemon"); // ["Lemon","Orange","Apple","Kiwi"], x = 4;
+fruits[fruits.length] = "Banana"; // 가장 마지막에 값이 들어감, ["Lemon","Orange","Apple","Kiwi","Banana"]
+```
+
+2.
+```
+var fruits = ["Banana","Orange","Apple","Mango"];
+fruits.splice(2,0,"Lemon","Kiwi"); // 처음 지울 인덱스, 몇개 지울건지
+// Banana,Orange,Lemon,Kiwi,Apple,Mango
+fruits.splice(0,1); // Orange,Lemon,Kiwi,Apple,Mango
+fruits.slice(1,3); // 자른 부분을 가져옴
+// Lemon,Kiwi
+```
+
 3.
+```
+var fruits = ["Banana","Orange","Apple","Mango"];
+fruits.sort(); // Apple,Banana,Mango,Orange
+fruits.reverse(); // Orange,Mango,Banana,Apple
+```
+
+4.
+```
+var points = [40,100,1,5,25,10];
+points.sort(); // 1,10,100,25,40,5 --> 문자열기준 sort
+points.sort(function(a,b){return a-b}); // 1,5,10,25,40,100
+points.sort(function(a,b){return b-a}); // 100,40,25,10,5,1
+points.sort(function(a, b){return 0.5 - Math.random()}); // 25,5,100,10,1,40 (random)
+```
+
 
 
