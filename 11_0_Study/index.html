@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <style>
+        * { box-sizing: border-box; }
+    </style>
+    <script>
+        $(document).ready(function() {
+            // initialize
+        });
+
+        function call1(){
+            // $("#result1").load("textdata.txt");
+            $.get("textdata.txt", function(data, status){
+                console.log("status: ", status);
+                console.log("data: ", data);
+                $("#result1").html($("#result1").html() + data); // 데이터 증분 기존에 있던 데이터에 새로운데이터를 계속 추가함
+            }); // data와 status를 받게끔 약속함
+        }
+
+        var customer_list;
+
+        function call2(){
+            $.getJSON("jsondata.json", function(result, status){ // $ 만 쓸경우에는 객체만 호출하겠다는 뜻임
+                console.log("success: ",status);
+                customer_list = result;
+            }).done(function(){
+                // done --> data를 가져 왔어! 라는 뜻임, success가 뜬다해서 데이터가 다 갖고온것은 아님
+            // done을 사용해서 안정적으로 데이터를 가져오는 것이 좋음, 이벤트이기때문에 안에 익명함수 작성가능
+                console.log("done");
+                console.log("result: ",customer_list);
+                table = $("<table class='table'></table>");
+                $("#result2").append(table);
+
+                for(i in customer_list.customer_list){
+                    tr = $("<tr></tr>");
+                    td1 = $("<td></td>").html(customer_list.customer_list[i].CustomerID);
+                    td2 = $("<td></td>").html(customer_list.customer_list[i].CustomerName);
+                    td3 = $("<td></td>").html(customer_list.customer_list[i].ContactName);
+                    td4 = $("<td></td>").html(customer_list.customer_list[i].Address);
+                    td5 = $("<td></td>").html(customer_list.customer_list[i].City);
+                    td6 = $("<td></td>").html(customer_list.customer_list[i].PostalCode);
+                    td7 = $("<td></td>").html(customer_list.customer_list[i].Country);
+                    tr.append(td1,td2,td3,td4,td5,td6,td7);
+                    table.append(tr);
+                }
+
+            }).fail(function(){
+                console.log("error");
+            }).always(function(){
+                console.log("complete");
+            });
+           
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <button onclick="call1()">text 문서를 가져옴</button>
+        <div id="result1"></div>
+    </div>
+    <div>
+        <button onclick="call2()">JSON 문서를 가져옴</button>
+        <div id="result2"></div>
+    </div>
+</body>
+</html>
