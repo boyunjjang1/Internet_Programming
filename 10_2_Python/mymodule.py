@@ -65,9 +65,9 @@ class Student(Person):
         self.subjectAndGrade[subject] = grade # 딕셔너리 추가함
         
     def getSubjects(self):
-        return list(self.setSubjectAndGrade.keys())
+        return list(self.subjectAndGrade.keys())
 
-    def getGrade(self, subejct):
+    def getGrade(self, subject):
         return self.subjectAndGrade[subject]
 
 

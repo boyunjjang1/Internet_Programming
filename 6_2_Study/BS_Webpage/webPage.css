@@ -1,5 +1,9 @@
-body {
- 
+.title {
+  color: gray;
+}
+.title:hover {
+  cursor: none;
+  color:pink;
 }
 
 #icon {
