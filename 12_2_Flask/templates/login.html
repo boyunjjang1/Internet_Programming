@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <form action="/login" method="POST">
+            <p>username: <input type="text" name="username"></p>
+            <p>password: <input type="password" name="password"></p>
+            <p><input type="submit"></p>
+        </form>
+        {% if error %}
+        <p>로그인에 실패하였습니다. 오류 메세지: {{error}}</p>
+        {% endif %}
+    </body>
+</html>
