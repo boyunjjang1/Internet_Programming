@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>customer_list</title>
+    </head>
+    <body>
+        <table border='1'>
+            <tr>
+                <th>CustomerID</th>
+                <th>CustomerName</th>
+                <th>ContactName</th>
+            </tr>
+            {%  for customer in obj.customer_list %}
+            <tr>
+                <td> {{ customer.CustomerID }}</td>
+                <td><a href="{{ url_for('customer_profile', customerid=customer.CustomerID)}}">{{customer.CustomerName}}</a></td>
+                <td>{{customer.ContactName}}</td>
+            </tr>
+            {% else %} <!-- list가 아무것도 없을 때 for문을 안돌때 else를 탄다 -->
+            <p>no customers found</p>
+            {% endfor %}
+        </table>
+        {% include 'footer.html' %}
+    </body>
+</html>

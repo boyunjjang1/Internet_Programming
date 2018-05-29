@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>customer_profile</title>
+    </head>
+    <body>
+        <table border='1'>
+                <tr><th>CustomerID</th>
+                <td>{{ customer.CustomerID }}</td></tr> 
+                <tr><th>CustomerName</th>
+                <td>{{ customer.CustomerName }}</td></tr>
+                <tr><th>ContactName</th>
+                <td>{{ customer.ContactName }}</td></tr>
+                <tr><th>Address</th>
+                <td>{{ customer.Address }}</td></tr>
+                <tr><th>City</th>
+                <td>{{ customer.City }}</td></tr>
+                <tr><th>PostalCode</th>
+                <td>{{ customer.PostalCode }}</td></tr>
+                <tr><th>Country</th>
+                <td>{{ customer.Country }}</td></tr>
+        </table>
+            <a href="{{ url_for('index') }}">목록 페이지</a> 
+            {% include 'footer.html' %}
+        </table>
+    </body>
+</html>
