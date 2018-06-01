@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>customer_list</title>
+    </head>
+    <body>
+        <table border='1'>
+            <tr>
+                <th>u_id</th>
+                <th>u_name</th>
+                <th>gender</th>
+                <th>age</th>
+                <th>  </th>
+            </tr>
+            {%  for row in rows %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td><a href="{{url_for('customer_delete',u_id=row[0])}}">delete?</a></td>
+            </tr>
+            {% else %}
+            <p>no customers found</p>
+            {% endfor %}
+        </table>
+        <a href="{{url_for('customer_new')}}">new customer</a>
+    </body>
+</html>
