@@ -26,7 +26,7 @@ def customer_new():
     if(request.method == 'POST'):
         u_name = request.form['u_name']
         gender = request.form['gender']
-        age = request.form['age']
+        age = request.form['age'] # 우선 튜플로 값을 넣는다.
         params = (u_name, gender, age)
         app.logger.debug(u_name, gender, age)
 
@@ -44,7 +44,7 @@ def customer_new():
 @app.route('/customers/delete/<int:u_id>')
 def customer_delete(u_id):
     u_id = int(u_id)
-    params = (u_id,)
+    params = (u_id,) # , 를 안찍으면 튜플이 안되기 때문에! !!
     app.logger.debug(u_id)
     
     con = sqlite3.connect('myshop')

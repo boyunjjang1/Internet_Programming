@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>customer_new</title>
+    </head>
+    <body>
+        <form method='POST'>
+            <p>u_name<input type="text" name="u_name"></p>
+            <p>gender
+                <select name="gender">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </p>
+            <p>age <input type="number" name="age"></p>
+            <p><input type="submit" value="register"></p>
+            {% if err %}
+            <p>{{err}}</p>
+            {% endif %}
+        </form>
+        <a href="{{url_for('customer_list')}}">customer_list</a>
+    </body>
+</html>
