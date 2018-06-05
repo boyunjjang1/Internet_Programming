@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, redirect, request, session
 import sqlite3
 
+
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
@@ -19,7 +20,7 @@ def index():
             params = (email, password)
             app.logger.debug('index() - %s' % str(params))
 
-            con=sqlite3.connect('mywebsite')
+            con=sqlite3.connect('mywebsite_createtables')
             cur=con.cursor()
             cur.execute('''
                 SELECT u_id, u_name FROM tbuser WHERE email=? AND password=? AND use_flag='Y';
@@ -51,7 +52,7 @@ def user_signup():
         params = (email, u_name, password, gender, birth_year)
         app.logger.debug('user_signup() - %s' % str(params))
         
-        con=sqlite3.connect('mywebsite')
+        con=sqlite3.connect('mywebsite_createtales')
         cur=con.cursor()
         cur.execute('''
             INSERT INTO tbuser (email, u_name, password, gender, birth_year) 
@@ -84,7 +85,7 @@ def user_profile():
     if isLogin(): #'u_id' in session:   # 로그인 되어 있다면
         u_id = session['u_id']
         params = (u_id,)
-        con=sqlite3.connect('mywebsite')
+        con=sqlite3.connect('mywebsite_createtables')
         cur=con.cursor()
         cur.execute('''
             SELECT u_id, email, password, u_name, gender, birth_year, add_dt, upd_dt FROM tbuser WHERE u_id=?;
@@ -108,7 +109,7 @@ def user_update():
         if request.method != 'POST':            # 회원 정보를 제공함
             u_id = session['u_id']
             params = (u_id,)
-            con=sqlite3.connect('mywebsite')
+            con=sqlite3.connect('mywebsite_createtables')
             cur=con.cursor()
             cur.execute('''
                 SELECT u_id, email, password, u_name, gender, birth_year, add_dt, upd_dt FROM tbuser WHERE u_id=?;
@@ -132,7 +133,7 @@ def user_update():
             params = (email, u_name, password, gender, birth_year, u_id)
             app.logger.debug('user_update() - params: %s' % str(params))
             
-            con=sqlite3.connect('mywebsite')
+            con=sqlite3.connect('mywebsite_createtables')
             cur=con.cursor()
             cur.execute('''
                 UPDATE tbuser SET email=?, u_name=?, password=?, gender=?, birth_year=?, upd_dt=DATETIME('now', 'localtime') WHERE u_id=?
@@ -151,7 +152,7 @@ def user_leave():
         params = (u_id,)
         app.logger.debug('user_leave() - params: %s' % str(params))
         
-        con=sqlite3.connect('mywebsite')
+        con=sqlite3.connect('mywebsite_createtables')
         cur=con.cursor()
         cur.execute('''
             UPDATE tbuser SET use_flag='N', upd_dt=DATETIME('now', 'localtime') WHERE u_id=?
@@ -189,7 +190,7 @@ def borad_readpost():
     pass
 
 def createTables():
-    con=sqlite3.connect('mywebsite')
+    con=sqlite3.connect('mywebsite_createtables')
     cur=con.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS tbuser;
@@ -225,6 +226,6 @@ def createTables():
     pass    
 
 if __name__ == '__main__':
-    # createTables()
+    createTables()
     app.run(host='0.0.0.0', port=5000, debug=True)
 
