@@ -1,4 +1,14 @@
 {% include 'head.html' %}
 <body>
     {% include 'header.html' %}
+    {% if u_name %}
+        {% include 'login.html' %}
+    {% else %}
+        {% include 'logout.html' %}
+    {% endif %}
+    <div>
+        이미지 목록 보여줄 곳
+    </div>
+
+{% include 'footer.html' %}
 </body>

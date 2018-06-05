@@ -83,11 +83,17 @@
 
         <script>
             function validateForm(){
-                var id = $("#id").val();
-                console.log(id);
+                // var id = $("#id").val();
+                // console.log(id);
+                // if(id == ""){
+                //     alert("아이디를 입력해주세요");
+                //     $("#id").focus();
+                //     return false;
+
+                var id = document.getElementById("id").value;
                 if(id == ""){
-                    alert("아이디를 입력해주세요");
-                    $("#id").focus();
+                    alert("아이디를 입력해주세요.");
+                    document.getElementById("id").focus();
                     return false;
                 }
             }
