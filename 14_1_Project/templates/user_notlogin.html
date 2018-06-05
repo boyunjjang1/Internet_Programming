@@ -1,0 +1,18 @@
+{% include 'head.html' %}
+<body>
+    <div class="container">
+        {% include 'header.html' %}
+        <div class="row my-3">
+            <div class="col text-center my-5">
+                <h6 class="text-danger my-3">로그인이 필요합니다.</h6>
+                <a href="{{ url_for('index') }}" class="btn btn-primary mx-2 text-center">이전 화면</a>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </div>
+    <script>
+        $(document).ready(function() {
+            // initialize
+        });
+    </script>
+</body>

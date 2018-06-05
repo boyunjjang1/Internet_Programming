@@ -1,0 +1,25 @@
+{% include 'head.html' %}
+<body>
+    <div class="container">
+        {% include 'header.html' %}
+        {% if u_name %}
+            {% include 'login.html' %}
+        {% else %}
+            {% include 'logout.html' %}            
+        {% endif %}
+        <div class="row my-3">
+            <div class="col">
+                게시판 글목록을 보여줄 것임
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </div>
+    <script>
+        $(document).ready(function() {
+            // initialize
+        });
+    </script>
+</body>
+
+
+
