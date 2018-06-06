@@ -10,15 +10,15 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 def index():
     u_name = None
     login_error = None
+    input_id = None
     if isLogin():
-        return render_template('index.html', u_name = session['u_name'], login_error = login_error)
+        return render_template('index.html', u_name = session['u_name'], input_id = session['input_id'], login_error = login_error)
     else:
         if request.method == 'POST':
             id = request.form["id"]
             pw = request.form["pw"]
             params = (id,pw)
             app.logger.debug('index() - %s' % str(params))
-
             con = sqlite3.connect('mywebsite_tables')
             cur = con.cursor()
             cur.execute('''
@@ -29,7 +29,8 @@ def index():
             app.logger.debug('index() -%s' % str(rows))
             if len(rows) == 1:
                 session['u_id'] = rows[0][0]
-                session['u_name'] = rows[0][1]
+                session['u_name'] = rows[0][4]
+                session['input_id'] = rows[0][1]
                 return redirect(url_for('index'))
             else:
                 login_error = '로그인에 실패하셨습니다.'
@@ -57,7 +58,7 @@ def user_signup():
         cur = con.cursor()
         cur.execute('''
             INSERT INTO tbuser (input_id, email, pw, u_name, gender, birth, u_tel, u_live, sns_inform)
-            VALUES (?,?,?,?,?,?,?,?,?,?);
+            VALUES (?,?,?,?,?,?,?,?,?);
         ''', params)
         con.commit()
         con.close()
@@ -167,9 +168,16 @@ def user_leave():
     else:
         return render_template('user_notlogin.html')
 
+# admin기능 - 파일 업로드
+@app.route('/admin')
+def upload_file():
+    if request.method == 'POST':
+        p_name = request.form['p_name']
+        price = request.form['price']
+        file = request.files['file']
 
 def createtables():
-    con = sqlite3.connect('mywebsite_createtables')
+    con = sqlite3.connect('mywebsite_tables')
     cur = con.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS tbuser;
@@ -196,6 +204,8 @@ def createtables():
     ''')
     con.commit()
     pass
+
+
 
 if __name__ == '__main__':
    createtables()
