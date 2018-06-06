@@ -1,11 +1,14 @@
 {% include 'head.html' %}
 <body>
-    <div class="container">
+    <div class="container" id="content">
         {% include 'header.html' %}
         {% if u_name %}
             {% include 'login.html' %}
         {% else %}
             {% include 'logout.html' %}
+        {% endif %}
+        {% if input_id == 'godboyun' %}
+            {% include 'admin_page.html' %}
         {% endif %}
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
@@ -44,4 +47,8 @@
 
         {% include 'footer.html' %}
 </div>
+
+<script>
+
+</script>
 </body>
