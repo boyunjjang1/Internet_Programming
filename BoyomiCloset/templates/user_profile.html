@@ -2,14 +2,14 @@
 <body>
         <div class="container">
                 <h2 class="titleArea" style="color:pink;">JOIN</h2>
-            <form onsubmit="return validateForm()" class="form-horizontal myform" action="https://www.w3schools.com/action_page.php" method="post">
+            <form class="form-horizontal" id="signupForm" method="post">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="id">ID</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" id="id" name="id" placeholder="Enter ID">
+                        <input class="form-control" type="text" id="id" name="id" placeholder="Enter ID" value="{{ user_info[1] }}" readonly>
                     </div>
                 </div> 
-                <div class="form-group">
+                <!--                 <div class="form-group">
                     <label class="control-label col-sm-2" for="pw">PW</label>
                     <div class="col-sm-10">
                         <input class="form-control" type="password" id="pw" name="pw">
@@ -21,37 +21,39 @@
                         <input class="form-control" type="password" id="pw2" name="pw2">
                     </div>
                 </div>
+                -->
+
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="name">name</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" id="name" name="name" placeholder="Enter name">
+                        <input class="form-control" type="text" id="name" name="name" placeholder="Enter name" value="{{ user_info[4] }}" readonly>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="radio-inline col-sm-offset-2">
-                        <input type="radio" class="gender" name="gender">Female
+                        <input type="radio" class="gender" name="gender" value="F" readonly {% if user_info[5] == 'F' %}checked{% endif %}>Female
                         </label>
                         <label class="radio-inline">
-                        <input type="radio" class="gender" name="gender">Male
+                        <input type="radio" class="gender" name="gender" value="M" readonly {% if user_info[5] == 'M' %}checked{% endif %}>Male
                         </label>
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2">Birthday</label>
                     <div class="col-sm-10">
-                        <input class="form-control" name="date" type="date">
+                        <input class="form-control" name="date" type="date" placeholder="Enter Your Birthday" value="{% user_info[6] %}" readonly>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="email">Email</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="email" id="email" name="email">
+                        <input class="form-control" type="email" id="email" name="email" placeholder="Enter Your Email" value="{% user_info[2] %}" readonly>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="tel">Tel</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="tel" id="tel" name="tel">
+                        <input class="form-control" type="tel" id="tel" name="tel" placeholder="Enter Your Tel" value="{% user_info[7] %}" readonly>
                     </div>
                 </div>
                 <div class="form-group">
@@ -67,64 +69,26 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <div class="checkbox">
-                            <label><input type="checkbox" name="SNS"> SNS Inform</label>
+                            <label><input type="checkbox" name="SNS" value="O" {% if user_info[8] == 'O' %}checked{% endif %}> SNS Inform</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button class="btn btn-default" type="submit">JOIN</button>
-                    </div>
-                </div>  
+                    <label for="add_dt">Add datetime:</label>
+                    <input type="text" class="form-control" id="u_name" min="1900" max="2100" name="add_dt" value="{{ user_info[9] }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="upd_dt">Update datetime:</label>
+                    <input type="text" class="form-control" id="u_name" min="1900" max="2100" name="upd_dt" value="{{ user_info[10] }}" readonly>
+                </div>
+                <div class="form-group text-center">
+                    <a href="{{ url_for('user_update') }}" class="btn btn-primary mx-2 text-center">회원 정보 수정</a>
+                    <a href="{{ url_for('index') }}" class="btn btn-primary mx-2 text-center">이전 화면</a>
+                </div>
             </form>
         </div>
 
         {%  include 'footer.html' %}
-
-        <script>
-            function validateForm(){
-
-                var id = document.getElementById("id").value;
-                if(id == ""){
-                    alert("아이디를 입력해주세요.");
-                    document.getElementById("id").focus();
-                    return false;
-                }
-                
-                var pw = document.getElementById("pw").value;
-                if(pw.length < 8){
-                    alert("패스워드를 8글자 이상 입력해주세요.");
-                    document.getElementById("pw").focus();
-                    return false;
-                }
-                var pw2 = document.getElementById("pw2").value;
-                if(pw != pw2){
-                    alert("패스워드가 일치하지 않습니다.");
-                    document.getElementById("pw2").focus();
-                    return false;
-                }
-                var name = document.getElementById("name").value;
-                if(name == ""){
-                    alert("이름을 입력해주세요.");
-                    document.getElementById("name").focus();
-                    return false;
-                }
-                
-                var gender = document.getElementsByClassName("gender");
-                var female = gender[0].checked;
-                var male = gender[1].checked;
-                if(female == false && male == false){
-                    alert("성별을 선택해주세요.");
-                    return false;
-                }
-                var tel = document.getElementById("tel").value;
-                if(tel == ""){
-                    alert("전화번호를 입력해주세요.");
-                    document.getElementById("tel").focus();
-                    return false;
-                }
-
-            }   
-        </script>
+       
 
 </body>
