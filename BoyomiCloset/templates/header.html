@@ -24,7 +24,15 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/user/join">JOIN</a></li>
                 <li><a href="./write.html">BOARD WRITE</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {% if u_name %}
+                    <!-- {% include 'login.html' %} -->
+                    <li><span>{{ u_name }}님</span></li>
+                    <li><a href="{{ url_for('user_profile') }}"><span>내 정보</span></a></li>
+                    <li><a href="/user/logout"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+                {% else %}
+                    <!-- {% include 'logout.html' %} -->
+                    <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
+                {% endif %}
             </ul>
             </div>
         </div>
