@@ -1,0 +1,13 @@
+
+<div class="row main-loginout" style="margin-bottom : 18px; margin-right: 15px;">
+    <div class="col-12 my-3 text-right">
+        <form class="form-inline" method="POST">
+            <input type="text" class="form-control mx-2" id="id" placeholder="Enter Your ID" name="id">
+            <input type="password" class="form-control mx-2" id="pw" placeholder="Enter password" name="pw">
+            <button type="submit" class="btn btn-default my-3 mx-2" >로그인</button>           
+        </form>        
+        {% if login_error %}
+            <h6 class="text-danger text-center my-3">{{ login_error }}</h6>
+        {% endif %}
+    </div>
+</div>
