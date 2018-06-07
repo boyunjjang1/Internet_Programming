@@ -10,9 +10,8 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 def index():
     u_name = None
     login_error = None
-    input_id = None
     if isLogin():
-        return render_template('index.html', u_name = session['u_name'], input_id = session['input_id'], login_error = login_error)
+        return render_template('index.html', u_name = session['u_name'], login_error = login_error)
     else:
         if request.method == 'POST':
             id = request.form["id"]
