@@ -21,15 +21,14 @@ def index():
             con = sqlite3.connect('mywebsite_tables')
             cur = con.cursor()
             cur.execute('''
-                SELECT u_id, u_name, FROM tbuser WHERE input_id=? AND pw=? AND use_flag='Y';
+                SELECT u_id, u_name FROM tbuser WHERE input_id=? AND pw=? AND use_flag='Y';
             ''',params)
             rows=cur.fetchall()
             con.close()
             app.logger.debug('index() -%s' % str(rows))
             if len(rows) == 1:
                 session['u_id'] = rows[0][0]
-                session['u_name'] = rows[0][4]
-                session['input_id'] = rows[0][1]
+                session['u_name'] = rows[0][1]
                 return redirect(url_for('index'))
             else:
                 login_error = '로그인에 실패하셨습니다.'
@@ -168,12 +167,6 @@ def user_leave():
         return render_template('user_notlogin.html')
 
 # admin기능 - 파일 업로드
-@app.route('/admin')
-def upload_file():
-    if request.method == 'POST':
-        p_name = request.form['p_name']
-        price = request.form['price']
-        file = request.files['file']
 
 def createtables():
     con = sqlite3.connect('mywebsite_tables')
