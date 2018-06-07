@@ -2,6 +2,14 @@
 <body>
     <div class="container" id="content">
         {% include 'header.html' %}
+        <div class="cont">
+            {% if u_name %}
+                {% include 'header-login.html' %}
+            {% else %}
+                {% include 'header-logout.html' %}            
+            {% endif %}
+        </div>
+        {% include 'nav.html' %}
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
