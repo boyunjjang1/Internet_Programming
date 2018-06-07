@@ -1,39 +1,5 @@
 <div class="container text-center">
     <a class="title" href="./"><h1 style="letter-spacing: 2px; color: gray;">BOYOMI'S CLOSET<img src="{{ url_for('static', filename='icon.png') }}" id="icon" alt="icon.png"></h1></a>      
     <p>Closet Shop && DailyLook</p>
-</div>    
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>                        
-            </button>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active home"><a href="./">HOME</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">DailyLook</a></li>
-                <li><a href="#">Top</a></li>
-                <li><a href="#">Skirt</a></li>
-                <li><a href="#">Bag</a></li>
-                <li><a href="#">Acc</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/user/join">JOIN</a></li>
-                <li><a href="./write.html">BOARD WRITE</a></li>
-                {% if u_name %}
-                    <!-- {% include 'login.html' %} -->
-                    <li><span>{{ u_name }}님</span></li>
-                    <li><a href="{{ url_for('user_profile') }}"><span>내 정보</span></a></li>
-                    <li><a href="/user/logout"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
-                {% else %}
-                    <!-- {% include 'logout.html' %} -->
-                    <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
-                {% endif %}
-            </ul>
-            </div>
-        </div>
-    </nav>
+</div>
+    
