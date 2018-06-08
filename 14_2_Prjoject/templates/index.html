@@ -1,0 +1,53 @@
+{% include 'head.html' %}
+<body>
+    <div class="container">
+        {% include 'header.html' %}
+        {% if u_name %}
+            {% include 'login.html' %}
+        {% else %}
+            {% include 'logout.html' %}            
+        {% endif %}
+        <div class="row my-3">
+            <div class="col" id='board_list'>                
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-4 text-center">
+                <form class="form-inline" method="GET">
+                    <input type="search" class="form-control" name="keyword">
+                    <input type="submit" class="btn btn-primary mx-2" value="검색"></button>
+                </form>
+            </div>
+            <div class="col-6 text-center">
+                <ul class="pagination" id='board_pagination'>
+                    <li class="page-item"><a class="page-link" href="{{ url_for('index', page=pageNum-1) }}"><<</a></li>
+                    {% for pn in pageNumList %}
+                    <li class="page-item {% if pn==pageNum %}active{% endif %}"><a class="page-link" href="{{ url_for('index', page=pn) }}">{{ pn }}</a></li>
+                    {% endfor %}
+                    <li class="page-item"><a class="page-link" href="{{ url_for('index', page=pageNum+1) }}">>></a></li>
+                </ul>                
+            </div>            
+            <div class="col-2 text-center">
+                {% if u_name %}
+                <a class="btn btn-primary mx-2" href="{{ url_for('board_post') }}" >글 등록</a>
+                {% endif %}
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </div>
+    <script>
+        $(document).ready(function() {
+            // initialize
+
+            // 게시판 글목록 페이지 가져오기
+            console.log("{{pageNum}}", "{{keyword}}");
+            $.get("{{ url_for('board_list', page=pageNum, keyword=keyword) }}".replace("&amp;", "&"), function(data, status){
+                // console.log("Data: " + data + "\nStatus: " + status);
+                $("#board_list").html(data);
+            });
+        });
+    </script>
+</body>
+
+
+

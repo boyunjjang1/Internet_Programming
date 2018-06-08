@@ -1,0 +1,33 @@
+{% include 'head.html' %}
+<body>
+    <div class="container">
+        {% include 'header.html' %}
+        {% include 'login.html' %}
+        <div class="row my-3">
+            <div class="col">
+                <h2 class="text-center py-3">게시판 글 등록 페이지</h2>
+                <form class="form" id="boardPostForm" method="POST" action="{{ url_for('board_post') }}">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content:</label>
+                        <textarea class="form-control" id="content" placeholder="10자 이상 입력해 주세요." name="content" rows="10"></textarea>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary my-3 mx-2">게시판 글 등록</button>
+                        <a href="{{ url_for('index') }}" class="btn btn-primary mx-2">이전 화면</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </div>
+    <script>
+        $(document).ready(function() {
+            // initialize
+        });
+    </script>
+</body>
+

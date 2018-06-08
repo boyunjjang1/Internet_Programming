@@ -1,0 +1,55 @@
+{% include 'head.html' %}
+<body>
+    <div class="container">
+        {% include 'header.html' %}
+        <div class="row py-3">
+            <div class="col">
+                <h2 class="text-center py-3">회원 등록 페이지</h2>
+                <form class="form" id="signupForm" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter eMail" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="u_name">User name:</label>
+                        <input type="text" class="form-control" id="u_name" placeholder="Enter username" name="u_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <p>gender: </p>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="gender" value="M">Male
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="gender" value="F">Female
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="birth_year">Birth year:</label>
+                        <input type="number" class="form-control" id="u_name" min="1900" max="2100" placeholder="Enter birth year" name="birth_year">
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary my-3 mx-2">회원 등록</button>
+                        <a href="{{ url_for('index') }}" class="btn btn-primary mx-2">이전 화면</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </div>
+    <script>
+        $(document).ready(function() {
+            // initialize
+        });
+    </script>
+</body>
+
+
+

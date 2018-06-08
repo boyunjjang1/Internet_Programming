@@ -1,0 +1,25 @@
+body {
+    background-color:rgb(225,225,225);
+    color:rgb(83,83,83);
+}
+.main-header {
+    background-color:rgb(0,101,179);
+    color:rgb(255,255,255);
+    font-weight: bolder;
+}
+.main-loginout {
+    background-color:rgb(225,225,225);
+    color:rgb(83,83,83);
+}
+.main-content {
+    background-color:rgb(225,225,225);
+    color:rgb(83,83,83);
+}
+.main-footer {
+    background-color:rgb(0,101,179);
+    color:rgb(255,255,255);
+}
+table a:any-link {
+    text-decoration: none;
+    color:rgb(83,83,83);
+}

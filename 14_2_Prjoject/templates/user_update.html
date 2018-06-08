@@ -1,0 +1,61 @@
+{% include 'head.html' %}
+<body>
+    <div class="container">
+        {% include 'header.html' %}
+        <div class="row my-3">
+            <div class="col">
+                <h2 class="text-center py-3">회원 정보보기 페이지</h2>
+                <form class="form" id="updateForm" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter eMail" name="email" value="{{ user_info[1] }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="u_name">User name:</label>
+                        <input type="text" class="form-control" id="u_name" placeholder="Enter username" name="u_name" value="{{ user_info[3] }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" value="{{ user_info[2] }}">
+                    </div>
+                    <div class="form-group">
+                        <p>gender: </p>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">                                
+                                <input type="radio" class="form-check-input" name="gender" value="M" {% if user_info[4] == 'M' %}checked{% endif %}>Male
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="gender" value="F" {% if user_info[4] == 'F' %}checked{% endif %}>Female
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="birth_year">Birth year:</label>
+                        <input type="number" class="form-control" id="u_name" min="1900" max="2100" placeholder="Enter birth year" name="birth_year" value="{{ user_info[5] }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="add_dt">Add datetime:</label>
+                        <input type="text" class="form-control" id="u_name" min="1900" max="2100" name="add_dt" value="{{ user_info[6] }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="upd_dt">Update datetime:</label>
+                        <input type="text" class="form-control" id="u_name" min="1900" max="2100" name="upd_dt" value="{{ user_info[7] }}" readonly>
+                    </div>
+                    <div class="form-group text-center">                        
+                        <button type="submit" class="btn btn-primary my-3 mx-2">회원 정보 수정 저장</button>
+                        <a href="{{ url_for('user_leave') }}" class="btn btn-primary mx-2 text-center">회원 탈퇴</a>
+                        <a href="{{ url_for('user_profile') }}" class="btn btn-primary mx-2 text-center">이전 화면</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </div>
+    <script>
+        $(document).ready(function() {
+            // initialize
+        });
+    </script>
+</body>
