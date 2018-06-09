@@ -10,6 +10,8 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 def index():
     u_name = None
     login_error = None
+    pageNum = None
+    pageNumList = None
     if isLogin():
         return render_template('index.html', u_name = session['u_name'], login_error = login_error)
     else:
@@ -200,5 +202,5 @@ def createtables():
 
 
 if __name__ == '__main__':
-   createtables()
+   # createtables()
    app.run(host='0.0.0.0', port=5000, debug=True)

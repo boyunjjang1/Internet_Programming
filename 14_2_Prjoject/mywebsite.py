@@ -18,6 +18,7 @@ def index():
     pageNumList = None    
     
     pageNum = request.args.get('page')  # http://127.0.0.1:5000/board/?page=1
+    # form tag에서 받는 것이 아닌 querystring 받을 때 사용
     if pageNum is None:
         pageNum = '1'
     pageNum = int(pageNum)
@@ -293,6 +294,7 @@ def board_update(board_id):
         else:                           # 회원 정보를 업데이트 함 (POST)
             # 입력받은 b_id, title, content 를 데이터베이스에 저장한다. 오류 처리는 생략 한다. 
             u_id = session['u_id']
+            # 서버에서도 체크 할 것 !! 예외처리 하자 보윤아 ㅎㅎ
             b_id = int(request.form['b_id'])
             title = request.form['title']            
             content = request.form['content']
@@ -326,6 +328,7 @@ def board_delete(board_id):
         cur.execute('''
             UPDATE tbboard SET use_flag='N', upd_dt=DATETIME('now', 'localtime') WHERE b_id=? AND u_id=?;
             ''', params)
+            # 정말 삭제 하시겠습니까 물어볼것
         con.commit()
         con.close()
         return redirect(url_for('index'))

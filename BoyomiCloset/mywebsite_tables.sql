@@ -27,3 +27,13 @@ CREATE TABLE IF NOT EXISTS tbproduct(
     price INTEGER NOT NULL,
     img_path TEXT NOT NULL UNIQUE
 );
+
+CREATE TABLE IF NOT EXISTS tbboard(
+    b_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    u_id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    add_at DATETIME DEFAULT (DATETIME('now', 'localtime'))
+    upd_at DATETIME DEFAULT (DATETIME('now', 'localtime'))
+    use_flag TEXT DEFAULT('Y')
+);

@@ -44,6 +44,7 @@
             $.get("{{ url_for('board_list', page=pageNum, keyword=keyword) }}".replace("&amp;", "&"), function(data, status){
                 // console.log("Data: " + data + "\nStatus: " + status);
                 $("#board_list").html(data);
+                // $.get --> ajax로 가져옴
             });
         });
     </script>
