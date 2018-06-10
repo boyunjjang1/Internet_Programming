@@ -1,0 +1,20 @@
+<div class="row my-3">
+    <div class="col">
+        <table class="table table-striped table-bordered table-hover">
+            <tr class='text-center thead-light'>
+                <th>글 번호</th>
+                <th>글 제목</th>
+                <th>작성자</th>                
+                <th>작성일</th>
+            </tr>
+            {% for row in board_rows %}
+            <tr>
+                <td class='text-center'>{{ row[0] }}</td>                
+                <td><a href="{{ url_for('board_view', board_id=row[0] ) }}">{{ row[2] }}</a></td>
+                <td class='text-center'>{{ row[1] }}</td>
+                <td class='text-center'>{{ row[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>        
+    </div>
+</div>
