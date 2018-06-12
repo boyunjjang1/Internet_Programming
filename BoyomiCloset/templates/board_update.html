@@ -11,25 +11,34 @@
             </div>
             <div class="form-group">
                 <label for="u_id">작성자:</label>
-                <input type="text" class="form-control" id="u_id" placeholder="Enter 작성자" name="u_id" value="{{ board_view[2] }}" readonly>
+                <input type="text" class="form-control" id="u_id" placeholder="Enter 작성자" name="u_id" value="{{ board_view[1] }}" readonly>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="title">제목</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" id="title" name="title" placeholder="Enter title" value="{{ board_view[3] }}">
+                    <input class="form-control" type="text" id="title" name="title" placeholder="Enter title" value="{{ board_view[2] }}">
                 </div>
             </div> 
             <div class="form-group">
                 <label class="control-label col-sm-2" for="content">내용</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+                    <textarea class="form-control" name="content" id="content" value="{{ board_view[4] }}" cols="30" rows="10"></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button class="btn btn-default" type="submit">글 수정 저장</button>
-                </div>
-            </div>  
+                <label for="add_dt">Add datetime:</label>
+                <input type="text" class="form-control" id="u_name" min="1900" max="2100" name="add_dt" value="{{ board_view[5] }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="upd_dt">Update datetime:</label>
+                <input type="text" class="form-control" id="u_name" min="1900" max="2100" name="upd_dt" value="{{ board_view[6] }}" readonly>
+            </div>
+                <div class="form-group text-center">
+                    {% if u_id==board_view[1] %} {# 현재 세션의 유저와 가져온 게시글의 유저가 같은 경우 #}
+                    <button type="submit" class="btn btn-default my-3 mx-2">게시판 글 수정 저장</button>
+                    {% endif %}
+                    <a href="{{ url_for('board_view', board_id=board_view[0] ) }}" class="btn btn-primary mx-2 text-center">이전 화면</a>
+                </div>  
         </form>
     </div>
 <script>
