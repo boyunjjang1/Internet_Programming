@@ -13,13 +13,13 @@ CREATE TABLE IF NOT EXISTS tbuser(
     u_tel INTEGER NULL,
     u_live TEXT NULL,
     sns_inform TEXT NULL,
-    add_at DATETIME DEFAULT (DATETIME('now', 'localtime'))
-    upd_at DATETIME DEFAULT (DATETIME('now', 'localtime'))
+    add_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
+    upd_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
     use_flag TEXT DEFAULT('Y')
 );
 
 
-INSERT INTO tbuser (input_id, pw, u_name) VALUES ('godboyun', 'boyunjjang1', 'Admin');
+-- INSERT INTO tbuser (input_id, pw, u_name) VALUES ('godboyun', 'boyunjjang1', 'Admin');
 
 CREATE TABLE IF NOT EXISTS tbproduct(
     p_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -33,13 +33,16 @@ CREATE TABLE IF NOT EXISTS tbboard(
     u_id INTEGER NOT NULL,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
-    add_at DATETIME DEFAULT (DATETIME('now', 'localtime'))
-    upd_at DATETIME DEFAULT (DATETIME('now', 'localtime'))
+    add_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
+    upd_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
     use_flag TEXT DEFAULT('Y')
 );
 
-INSERT OR REPLACE INTO tbuser (u_id, email, password, u_name) VALUES (1, 'admin@example.com', 'admin', '관리자');
-INSERT OR REPLACE INTO tbuser (u_id, email, password, u_name) VALUES (2, 'user@example.com', 'user', '사용자');
+
+-- 자료형은 바뀐다
+
+INSERT OR REPLACE INTO tbuser (input_id, email, pw, u_name) VALUES (1, 'admin@example.com', 'admin', '관리자');
+INSERT OR REPLACE INTO tbuser (input_id, email, pw, u_name) VALUES (2, 'user@example.com', 'user', '사용자');
 INSERT INTO tbboard (u_id, title, content) VALUES (1, '공지사항입니다.', '공지내용 볼 꺼 뭐 있나요.');
 INSERT INTO tbboard (u_id, title, content) VALUES (2, '강의자료 01_01_과목소개', '강의자료 01_01_과목소개');
 INSERT INTO tbboard (u_id, title, content) VALUES (2, '강의자료 01_02_HTML5', '강의자료 01_02_HTML5');

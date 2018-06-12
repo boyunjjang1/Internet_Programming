@@ -8,44 +8,19 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 # 회원기능 - 로그인
 @app.route('/', methods=['GET','POST'])
 def index():
+    session.clear()
     u_name = None
     login_error = None
-    pageNum = None
-    pageNumList = None
-
-
-    pageNum = request.args.get('page')
-    if pageNum is None:
-        pageNum = '1'
-    pageNum = int(pageNum)
-    if pageNum < 1:
-        pageNum = 1
-    app.logger.debug('index() - pageNum : %d' % pageNum)
-
-
-    keyword = None
-    keyword = request.args.get('keyword')
-    app.logger.debug('index() - keyword : %s' % keyword)
-
-
-    startNum, endNum = 0, 0
-    if pageNum >= 3:
-        startNum = pageNum - 2
-    else:
-        startNum = 1
-    endNum = startNum + 4
-    pageNumList = list(range(startNum, endNum+1))
-    app.logger.debug('index() - pageNumList : %s' % pageNumList)
 
     if isLogin():
-        return render_template('index.html', u_name = session['u_name'], login_error = login_error, pageNum = pageNum, pageNumList = pageNumList, keyword = keyword)
+        return render_template('index.html', u_name = session['u_name'], login_error = login_error)
     else:
         if request.method == 'POST':
             id = request.form["id"]
             pw = request.form["pw"]
             params = (id,pw)
             app.logger.debug('index() - %s' % str(params))
-            con = sqlite3.connect('mywebsite_tables')
+            con = sqlite3.connect('mywebsite_createtables')
             cur = con.cursor()
             cur.execute('''
                 SELECT u_id, u_name FROM tbuser WHERE input_id=? AND pw=? AND use_flag='Y';
@@ -59,9 +34,9 @@ def index():
                 return redirect(url_for('index'))
             else:
                 login_error = '로그인에 실패하셨습니다.'
-                return render_template('index.html', u_name = u_name, login_error = login_error, pageNum = pageNum, pageNumList = pageNumList, keyword = keyword)
+                return render_template('index.html', u_name = u_name, login_error = login_error)
         else:
-            return render_template('index.html', u_name = u_name, login_error = login_error, pageNum = pageNum, pageNumList = pageNumList, keyword = keyword)
+            return render_template('index.html', u_name = u_name, login_error = login_error)
 
 # 회원기능 - 회원등록
 @app.route('/user/join', methods=['GET','POST'])
@@ -79,12 +54,12 @@ def user_signup():
         params = (input_id, email, pw, u_name, gender, birth, u_tel, u_live, sns_inform)
         app.logger.debug('user_signup() - %s' % str(params))
     
-        con = sqlite3.connect('mywebsite_tables')
+        con = sqlite3.connect('mywebsite_createtables')
         cur = con.cursor()
         cur.execute('''
             INSERT INTO tbuser (input_id, email, pw, u_name, gender, birth, u_tel, u_live, sns_inform)
             VALUES (?,?,?,?,?,?,?,?,?);
-        ''', params)
+        ''', params) 
         con.commit()
         con.close()
         return redirect(url_for('index'))
@@ -111,7 +86,7 @@ def user_profile():
     if isLogin():
         u_id = session['u_id']
         params = (u_id,)
-        con = sqlite3.connect('mywebsite_tables')
+        con = sqlite3.connect('mywebsite_createtables')
         cur = con.cursor()
         cur.execute('''
             SELECT u_id, input_id, email, pw, u_name, gender, birth, u_tel, u_live, sns_inform, add_at, upd_at
@@ -133,7 +108,7 @@ def user_update():
         if request.method != 'POST':
             u_id = session['u_id']
             params = (u_id,)
-            con = sqlite3.connect('mywebsite_tables')
+            con = sqlite3.connect('mywebsite_createtables')
             cur = con.cursor
             cur.execute('''
                 SELECT u_id, input_id, pw, u_name, gender, birth, u_tel, u_live, sns_inform, add_at, upd_at
@@ -160,7 +135,7 @@ def user_update():
             params = (email, pw, u_name, gender, birth, u_tel, u_live, sns_inform)
             app.logger.debug('user_update() - params: %s' % str(params))
 
-            con = sqlite3.connect('mywebsite_tables')
+            con = sqlite3.connect('mywebsite_createtables')
             cur = con.cursor()
             cur.execute('''
                 UPDATE tbuser SET email=?, pw=?, u_name=?, gender=?, birth_year=?, u_tel=?, u_live=?, sns_inform=?;
@@ -180,7 +155,7 @@ def user_leave():
         params = (u_id,)
         app.logger.debug('user_leave() - params: %s' % str(params))
 
-        con = sqlite3.connect('mywebsite_tables')
+        con = sqlite3.connect('mywebsite_createtables')
         cur = con.cursor()
         cur.execute('''
             UPDATE tbuser SET use_flag='N', upd_at = DATETIME('now', 'localtime') WHERE u_id=?;
@@ -197,6 +172,32 @@ def user_leave():
 # 게시판 기능 - 게시판_글목록
 @app.route('/board/')
 def board_list():
+    pageNum = None
+    pageNumList = None
+
+
+    pageNum = request.args.get('page')
+    if pageNum is None:
+        pageNum = '1'
+    pageNum = int(pageNum)
+    if pageNum < 1:
+        pageNum = 1
+    app.logger.debug('board_list() - pageNum : %d' % pageNum)
+
+
+    keyword = None
+    keyword = request.args.get('keyword')
+    app.logger.debug('board_list() - keyword : %s' % keyword)
+
+
+    startNum, endNum = 0, 0
+    if pageNum >= 3:
+        startNum = pageNum - 2
+    else:
+        startNum = 1
+    endNum = startNum + 4
+    pageNumList = list(range(startNum, endNum+1))
+    app.logger.debug('board_list() - pageNumList : %s' % pageNumList)
     # 조회 할 페이지 번호를 가져옴 get query string
     pageNum = request.args.get('page')
     if pageNum is None:
@@ -215,7 +216,7 @@ def board_list():
     # DB로 부터 tbboard 게시판 글 목록을 가져옴
     offset = (pageNum - 1) * 10
     params = (offset,)
-    con = sqlite3.connect('mywebsite_tables')
+    con = sqlite3.connect('mywebsite_createtables')
     cur = con.cursor()
     if keyword == None:
         cur.execute('''
@@ -231,10 +232,11 @@ def board_list():
             WHERE b.use_flag = 'Y' AND (b.title like '%'||?||'%'
             OR b.content like '%'||?||'%') ORDER BY b_id DESC LIMIT 10 OFFSET ?;
         ''', params)
-        rows = cur.fetchall()
-        con.close()
-    
-    return render_template('board_list.html', board_rows = rows)
+
+    rows = cur.fetchall()
+    app.logger.debug('board_list() - %s' % rows)
+    con.close()
+    return render_template('board_list.html', board_rows = rows, pageNum = pageNum, pageNumList = pageNumList, keyword = keyword)
 
 
 
@@ -249,7 +251,7 @@ def board_post():
             params = (u_id, title, content)
             app.logger.debug('board_post() - %s' % str(params))
 
-            con = sqlite3.connect('mywebsite_creatables')
+            con = sqlite3.connect('mywebsite_createtables')
             cur = con.cursor()
             cur.execute('''
                 INSERT INTO tbboard (u_id, title, content) VALUES (?, ?, ?);
@@ -259,7 +261,7 @@ def board_post():
             con.close()
             return redirect(url_for('index'))
         else:
-            u_name = session['u_id']
+            u_name = session['u_name']
             return render_template('board_post.html', u_name = u_name)
     else:
         return render_template('user_notlogin.html')
@@ -344,7 +346,7 @@ def board_view(board_id):
         u_id = session['u_id']
         params = (board_id,)
         app.logger.debug('board_view() - %s' % str(params))
-        con=sqlite3.connect('mywebsite')
+        con=sqlite3.connect('mywebsite_createtables')
         cur=con.cursor()
         cur.execute('''
         SELECT b_id, b.u_id, u_name, title, content, b.add_dt, b.upd_dt
@@ -368,7 +370,7 @@ def board_view(board_id):
 # admin기능 - 파일 업로드
 
 def createtables():
-    con = sqlite3.connect('mywebsite_tables')
+    con = sqlite3.connect('mywebsite_createtables')
     cur = con.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS tbuser;
