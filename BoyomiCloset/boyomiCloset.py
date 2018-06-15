@@ -8,7 +8,6 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 # 회원기능 - 로그인
 @app.route('/', methods=['GET','POST'])
 def index():
-    session.clear()
     u_name = None
     login_error = None
 
@@ -25,7 +24,7 @@ def index():
             cur.execute('''
                 SELECT u_id, u_name FROM tbuser WHERE input_id=? AND pw=? AND use_flag='Y';
             ''',params)
-            rows=cur.fetchall()
+            rows = cur.fetchall()
             con.close()
             app.logger.debug('index() -%s' % str(rows))
             if len(rows) == 1:
@@ -403,3 +402,4 @@ def createtables():
 if __name__ == '__main__':
    # createtables()
    app.run(host='0.0.0.0', port=5000, debug=True)
+   session.clear()
