@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webpage_template</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <style>
+        @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+        * { box-sizing: border-box; 
+            /* font-family: 'Jeju Gothic', serif; */
+        }
+        header { background-color:rgb(50,50,50);
+            color:rgb(255,255,255); }
+        article { background-color:rgb(200,200,200) }
+        label { font-size: 140%; }
+        .progress {height: 30px; }
+        .progress-bar { color:rgb(0,0,0); }
+        .progress .sr-only { position: relative; }
+        .progress-bar-success { background-color:rgba(0,0,255,0.5); }
+        .progress-bar-warning { background-color:rgba(255,0,0,0.5); }
+    </style>
+    <script>
+        $(document).ready(function() {
+            // initialize
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="row py-5 text-center">            
+            <div class="col">
+                <h1>인터넷 프로그래밍 기말고사 수행 여부 설문조사 결과</h1>
+            </div>
+        </header>
+        <article class="row pt-3 pb-3">
+            <div class="col mx-3">
+                <h3 class="pt-2">Q. 전체 응답율</h3>
+                
+                <div class="progress mt-3">
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{ r.student_n_cnt / r.student_total * 100 }}%">
+                        {{ r.student_n_cnt }}명, {{ r.student_n_cnt / r.student_total * 100 }}% 응답
+                    </div>
+                    <div class="progress-bar progress-bar-warning" role="progressbar" style="width:{{ r.student_y_cnt / r.student_total * 100 }}%">
+                        {{ r.student_y_cnt }}명, {{ r.student_y_cnt / r.student_total * 100 }}% 미응답
+                    </div>
+                </div>
+
+                <h3 class="pt-4 pb-1">Q1. 기말고사 여부</h3>
+                
+                <h4 class="pt-2">A1.1. 본다</h4>
+                <div class="progress">                
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ r.q1_y }}" aria-valuemin="0" aria-valuemax="{{ r.student_total }}" style="width:{{ r.q1_y / r.student_total * 100 }}%">
+                        {{ r.q1_y }}명, {{ r.q1_y / r.student_total * 100 }}% 응답
+                    </div>
+                </div>
+                
+                <h4 class="pt-2">A1.2. 안본다</h4>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ r.q1_n }}" aria-valuemin="0" aria-valuemax="{{ r.student_total }}" style="width:{{ r.q1_n / r.student_total * 100 }}%">
+                        {{ r.q1_n }}명, {{ r.q1_n / r.student_total * 100 }}% 응답
+                    </div>
+                </div>
+                
+                <h4></h4>
+                
+                <h3 class="pt-4">Q2. 기말고사를 보게될 경우 문제 출제 방법</h3>
+                
+                <h4 class="pt-2">A2.1. 교수가 제시하는 굉장히 어려운 문제</h4>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ r.q2_1 }}" aria-valuemin="0" aria-valuemax="{{ r.student_total }}" style="width:{{ r.q2_1 / r.student_total * 100 }}%">
+                        {{ r.q2_1 }}명, {{ r.q2_1 / r.student_total * 100 }}% 응답
+                    </div>
+                </div>
+
+                <h4 class="pt-2">A2.2. 학생들이 만들어온 시험 문제</h4>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ r.q2_2 }}" aria-valuemin="0" aria-valuemax="{{ r.student_total }}" style="width:{{ r.q2_2 / r.student_total * 100 }}%">
+                        {{ r.q2_2 }}명, {{ r.q2_2 / r.student_total * 100 }}% 응답
+                    </div>
+                </div>
+
+                <h4 class="pt-2">A2.3. 코드-웹페이지 작성 (단, 오프라인 시험)</h4>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ r.q2_3 }}" aria-valuemin="0" aria-valuemax="{{ r.student_total }}" style="width:{{ r.q2_3 / r.student_total * 100 }}%">
+                        {{ r.q2_3 }}명, {{ r.q2_3 / r.student_total * 100 }}% 응답
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <a class="btn btn-primary my-3 mx-2" href="{{ url_for('index')}}">설문조사 등록</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</body>
+</html>

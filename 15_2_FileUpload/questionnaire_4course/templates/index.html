@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webpage_template</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <style>
+        @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+        * { box-sizing: border-box; 
+            /* font-family: 'Jeju Gothic', serif; */
+        }
+        header { background-color:rgb(50,50,50);
+            color:rgb(255,255,255); }
+        article { background-color:rgb(200,200,200) }
+        label { font-size: 140%; }
+    </style>
+    <script>
+        $(document).ready(function() {
+            // initialize
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="row py-5 text-center">            
+            <div class="col">
+                <h1>인터넷 프로그래밍 기말고사 수행 여부 설문조사</h1>
+            </div>
+        </header>
+        <article class="row py-2">
+            <div class="col mx-3">
+                <form class='form' method="POST">
+                    {% if error_msg %}
+                    <h3 class='text-danger mt-3'>{{ error_msg }}</h3>
+                    {% endif %}
+                    <div class='form-group'>
+                        <h3 class="py-3">Q1. 기말고사 여부</h3>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="q1" value="Y">1.1. 본다                                
+                            </label>                            
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="q1" value="N">1.2. 안본다
+                            </label>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <h3 class="py-3">Q2. 기말고사를 보게될 경우 문제 출제 방법</h3>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="q2" value="1">2.1. 교수가 제시하는 굉장히 어려운 문제
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="q2" value="2">2.2. 학생들이 만들어온 시험 문제
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="q2" value="3">2.3. 코드-웹페이지 작성 (단, 오프라인)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group mt-5">
+                        <input type="text" class="form-control" id="s_num" placeholder="Enter 인하대 학번 (숫자 8자리만 허용함)" name="s_num" required pattern="[1]{1}[0-9]{7}">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Enter 한글 이름 (한글 3자리만 허용함)" name="name" required pattern="[가-힣]{3}">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Enter 학교 포탈에 등록된 이메일" name="email" required>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary my-3 mx-2">설문조사 등록</button>
+                        <a class="btn btn-primary my-3 mx-2" href="{{ url_for('result')}}">설문조사 결과</a>
+                    </div>                                        
+                </form>
+            </div>
+        </article>
+    </div>
+</body>
+</html>
