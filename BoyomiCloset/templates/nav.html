@@ -11,15 +11,15 @@
         <ul class="nav navbar-nav">
             <li class="active home"><a href="/">HOME</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">DailyLook</a></li>
-            <li><a href="#">Top</a></li>
-            <li><a href="#">Skirt</a></li>
+            <li><a href="{{ url_for('dailylook') }}">DailyLook</a></li>
+            <li><a href="{{ url_for('top') }}">Top</a></li>
+            <li><a href="{{ url_for('skirt') }}">Skirt</a></li>
             <li><a href="#">Bag</a></li>
-            <li><a href="#">Acc</a></li>
+            <li><a href="{{ url_for('acc') }}">Acc</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/user/join">JOIN</a></li>
-            <li><a href="/board/post">QnA</a></li>
+            <li><a href="{{ url_for('user_signup') }}">JOIN</a></li>
+            <li><a href="{{ url_for('board_post') }}">QnA</a></li>
             <li><a href="/board/">board</a></li>
         </ul>
         </div>
