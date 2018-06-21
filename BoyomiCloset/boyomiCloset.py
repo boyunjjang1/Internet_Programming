@@ -468,10 +468,17 @@ def dailylook():
     con = sqlite3.connect('mywebsite_createtables')
     cur = con.cursor()
     cur.execute('''
-        SELECT p_name, price, img_path FROM tbproduct WHERE kind='dailylook';
+        SELECT p_name, price, img_path, p_id FROM tbproduct WHERE kind='dailylook';
     ''')
     rows = cur.fetchall()
     con.close()
+
+    if request.method == 'POST':
+        con = sqlite3.connect('mywebsite_createtables')
+        cur = con.cursor()
+        cur.execute('''
+            SELECT p_name, price, img_path, p_id FROM tbproduct WHERE kind='dailylook';
+        ''')
 
     return render_template('dailylook.html', rows = rows)
 
@@ -480,7 +487,7 @@ def top():
     con = sqlite3.connect('mywebsite_createtables')
     cur = con.cursor()
     cur.execute('''
-        SELECT p_name, price, img_path FROM tbproduct WHERE kind='top';
+        SELECT p_name, price, img_path, p_id FROM tbproduct WHERE kind='top';
     ''')
     rows = cur.fetchall()
     con.close()
@@ -491,7 +498,7 @@ def skirt():
     con = sqlite3.connect('mywebsite_createtables')
     cur = con.cursor()
     cur.execute('''
-        SELECT p_name, price, img_path FROM tbproduct WHERE kind='skirt';
+        SELECT p_name, price, img_path, p_id FROM tbproduct WHERE kind='skirt';
     ''')
     rows = cur.fetchall()
     con.close()
@@ -502,7 +509,7 @@ def acc():
     con = sqlite3.connect('mywebsite_createtables')
     cur = con.cursor()
     cur.execute('''
-        SELECT p_name, price, img_path FROM tbproduct WHERE kind='acc';
+        SELECT p_name, price, img_path, p_id FROM tbproduct WHERE kind='acc';
     ''')
     rows = cur.fetchall()
     con.close()
