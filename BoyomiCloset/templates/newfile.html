@@ -1,0 +1,25 @@
+<!doctype html>
+    <meta charset="UTF-8">
+    <title>Upload new File</title>
+        <h1>Upload new File</h1>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            이름 : <input type="text" name="p_name">
+            가격 : <input type="text" name="price">
+            <label class="radio-inline">
+                <input type="radio" class="cate" name="cate" value="dailylook">DailyLook
+            </label>
+            <label class="radio-inline col-sm-offset-2">
+                <input type="radio" class="cate" name="cate" value="top">Top
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="cate" name="cate" value="skirt">Skirt
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="cate" name="cate" value="bag">Bag
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="cate" name="cate" value="acc">Acc
+            </label>
+            <input type="submit" value="Upload">
+        </form>
