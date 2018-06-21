@@ -39,8 +39,14 @@
                 <span class="sr-only">Next</span>
                 </a>
         </div>
-        <div>
-            이미지 목록 보여줄 곳
+        <div class="productList" style="margin-top: 50px;">
+            {% for row in products %}
+                <div class="imgList" style="display: inline-block; margin-right: 30px; margin-left: 30px;">
+                    <img style="width:250px; height:250px;" src="{{ row[3] }}"></td>
+                    <div style="text-align: center;">{{ row[1] }}</div>
+                    <div style="text-align: center;">{{ row[2] }}</div>
+                </div>
+            {% endfor %}
         </div>
 
         {% include 'footer.html' %}
