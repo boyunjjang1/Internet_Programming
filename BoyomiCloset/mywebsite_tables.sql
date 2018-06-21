@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS tbboard(
     content TEXT NOT NULL,
     add_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
     upd_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
+    visit INTEGER DEFAULT 0,
     use_flag TEXT DEFAULT('Y')
 );
 
