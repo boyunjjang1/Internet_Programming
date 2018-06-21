@@ -288,14 +288,14 @@ def board_list():
     cur = con.cursor()
     if keyword == None:
         cur.execute('''
-            SELECT b_id, u_name, title, b.add_at FROM tbboard AS b
+            SELECT b_id, u_name, title, b.add_at, visit FROM tbboard AS b
             INNER JOIN tbuser AS u ON b.u_id = u.u_id
             WHERE b.use_flag = 'Y' ORDER BY b_id DESC LIMIT 10 OFFSET ?;
             ''', params)
     else:
         params = (keyword, keyword, offset)
         cur.execute('''
-            SELECT b_id, u_name, title, b.add_at FROM tbboard AS b
+            SELECT b_id, u_name, title, b.add_at, visit FROM tbboard AS b
             INNER JOIN tbuser AS u ON b.u_id = u.u_id
             WHERE b.use_flag = 'Y' AND (b.title like '%'||?||'%'
             OR b.content like '%'||?||'%') ORDER BY b_id DESC LIMIT 10 OFFSET ?;
