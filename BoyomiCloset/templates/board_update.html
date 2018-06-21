@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="title">제목</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" id="title" name="title" placeholder="Enter title" value="{{ board_view[2] }}">
+                    <input class="form-control" type="text" id="title" name="title" placeholder="Enter title" value="{{ board_view[3] }}">
                 </div>
             </div> 
             <div class="form-group">
@@ -37,7 +37,7 @@
                     {% if u_id==board_view[1] %} {# 현재 세션의 유저와 가져온 게시글의 유저가 같은 경우 #}
                     <button type="submit" class="btn btn-default my-3 mx-2">게시판 글 수정 저장</button>
                     {% endif %}
-                    <a href="{{ url_for('board_view', board_id=board_view[0] ) }}" class="btn btn-primary mx-2 text-center">이전 화면</a>
+                    <a href="{{ url_for('board_view', board_id=board_view[0] ) }}" class="btn btn-default mx-2 text-center">이전 화면</a>
                 </div>  
         </form>
     </div>
