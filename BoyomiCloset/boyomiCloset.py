@@ -34,10 +34,11 @@ def upload_file():
             filename = secure_filename(file.filename) # 여기서 한글이 깨짐
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) # form tag에서 받아온 binary Data를 임시로 저장함
             product = filename
+            p_name = request.form["p_name"]
             price = request.form["price"]
             img_path = app.config['UPLOAD_FOLDER'] + product
             kind = request.form["cate"]
-            params = (product, price, img_path, kind)
+            params = (p_name, price, img_path, kind)
             con = sqlite3.connect('mywebsite_createtables')
             cur = con.cursor()
             cur.execute('''
@@ -417,15 +418,18 @@ def board_view(board_id):
         con=sqlite3.connect('mywebsite_createtables')
         cur=con.cursor()
         cur.execute('''
-        SELECT b_id, b.u_id, u_name, title, content, b.add_at, b.upd_at
+        SELECT b_id, b.u_id, u_name, title, content, b.add_at, b.upd_at, visit
         FROM (tbboard b INNER JOIN tbuser u
         ON b.u_id = u.u_id)
         WHERE b.use_flag='Y' AND b_id=?;
             ''', params)
         rows = cur.fetchall()
+        cur.execute('''
+            UPDATE tbboard SET visit = visit + 1 WHERE b_id=?;
+        ''', params)
+        con.commit()
         app.logger.debug('board_view() - %s' % str(rows))
         con.close()
-        app.logger.debug(rows[0])
         board_view = rows[0] 
         app.logger.debug(board_view)
 
@@ -473,12 +477,15 @@ def dailylook():
     rows = cur.fetchall()
     con.close()
 
-    if request.method == 'POST':
-        con = sqlite3.connect('mywebsite_createtables')
-        cur = con.cursor()
-        cur.execute('''
-            SELECT p_name, price, img_path, p_id FROM tbproduct WHERE kind='dailylook';
-        ''')
+    # if request.method == 'POST':
+    #     choice_product = request.form["choice"]
+
+    #     con = sqlite3.connect('mywebsite_createtables')
+    #     cur = con.cursor()
+    #     cur.execute('''
+    #         SELECT p_id FROM tbproduct WHERE p_id = ?;
+    #     ''',choice_product)
+        
 
     return render_template('dailylook.html', rows = rows)
 
@@ -491,6 +498,7 @@ def top():
     ''')
     rows = cur.fetchall()
     con.close()
+
     return render_template('top.html',rows = rows)
 
 @app.route('/skirt')
