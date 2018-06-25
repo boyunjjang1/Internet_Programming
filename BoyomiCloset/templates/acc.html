@@ -8,14 +8,17 @@
                     {% include 'header-logout.html' %}            
                 {% endif %}
         {% include 'nav.html' %}
-        <div class="productList" style="margin-top: 50px;">
-            {% for product in rows %}
-                <div class="imgList" style="display: inline-block; margin-right: 30px; margin-left: 30px;">
-                    <img style="width:250px; height:250px;" src="{{ product[2] }}"></td>
-                    <div style="text-align: center;">{{ product[0] }}</div>
-                    <div style="text-align: center;">{{ product[1] }}</div>
-                </div>
-            {% endfor %}
+            <form action="" method="POST">
+                {% for product in rows %}
+                    <div class="imgList" style="display: inline-block; margin-right: 30px;">
+                        <img style="width:250px; height:250px;" src="{{ product[2] }}"></td>
+                        <div style="text-align: center;">{{ product[0] }}</div>
+                        <div style="text-align: center;">{{ product[1] }}</div>
+                        <div style="text-align: center;"><input type="checkbox" name="choice" value="{{ product[3] }}"></div>
+                    </div>
+                {% endfor %}
+                <div style="text-align: center; margin-bottom: 50px;"><button style="display: inline-block;" type="submit" class="btn btn-default my-3 mx-2">장바구니</button></div>
+            </form>
         </div>
     </div>
     {% include 'footer.html' %}

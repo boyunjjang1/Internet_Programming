@@ -1,0 +1,28 @@
+{% include 'head.html' %}
+<body>
+    <div class="container">
+        {% include 'header.html' %}
+                {% if u_name %}
+                    {% include 'header-login.html' %}
+                {% else %}
+                    {% include 'header-logout.html' %}            
+                {% endif %}
+        {% include 'nav.html' %}
+        <form method="POST" style="text-align: center; margin-bottom: 100px;">
+            <h2 class="titleArea" style="color:pink;">CART</h2>
+            <div class="productList" style="margin-top: 50px;">
+                    {% for product in rows %}
+                        <div class="cartList" style="margin-bottom: 50px;">
+                            <img style="width:250px; height:250px;" src="{{ product[2] }}"></td>
+                            <div style="margin-left: 100px; text-align: center; display: inline-block;">{{ product[0] }}</div>
+                            <div style="margin-left: 100px; text-align: center; display: inline-block;">{{ product[1] }}</div>
+                        </div>
+                    {% endfor %}
+            </div>
+            <input type="submit" class="btn btn-default my-3 mx-2" value="장바구니 비우기"></input>
+        </form>
+           
+    
+    </div>
+    {% include 'footer.html' %}
+</body>

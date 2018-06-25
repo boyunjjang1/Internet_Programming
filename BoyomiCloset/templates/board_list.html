@@ -6,14 +6,16 @@
         <div class="col">
             <table class="table table-bordered table-hover">
                 <tr class='text-center thead-light'>
-                    <th>글 번호</th>
-                    <th>글 제목</th>
-                    <th>작성자</th>                
-                    <th>작성일</th>
+                    <th style="text-align: center">글 번호</th>
+                    <th style="text-align: center">조회수</th>
+                    <th style="text-align: center">글 제목</th>
+                    <th style="text-align: center">작성자</th>                
+                    <th style="text-align: center">작성일</th>
                 </tr>
                 {% for row in board_rows %}
                 <tr>
-                    <td class='text-center'>{{ row[0] }}</td>                
+                    <td class='text-center'>{{ row[0] }}</td>             
+                    <td class='text-center'>{{ row[4] }}</td>   
                     <td><a href="{{ url_for('board_view', board_id=row[0] ) }}">{{ row[2] }}</a></td>
                     <td class='text-center'>{{ row[1] }}</td>
                     <td class='text-center'>{{ row[3] }}</td>
